@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Registration Form in HTML CSS</title>
+
+    <link rel="stylesheet" href="signup_style.css" />
+  </head>
+  <body>
+    <div class="signup">
+      <h2>Regístrate en LAZARUS</h2>
+      <h3>Es muy fácil y sencillo</h3>
+
+      <form action="POST" class="form">
+        <div class="input-box">
+          <label>Nombre Completo</label>
+          <input
+            type="text"
+            placeholder="Introduzca su nombre completo"
+            required
+          />
+          <span class="material-symbols-outlined"> person </span>
+        </div>
+
+        <div class="input-box">
+          <label>Correo electrónico</label>
+          <input
+            type="email"
+            placeholder="Introduzca su correo eléctronico (único para cada cuenta)"
+            required
+          />
+          <span class="material-symbols-outlined"> email </span>
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Contraseña</label>
+            <input
+              name="password"
+              type="password"
+              required
+              placeholder="Introduzca una contraseña"
+            />
+            <span class="material-symbols-outlined"> key </span>
+          </div>
+
+          <div class="input-box">
+            <label>Confirmar contraseña</label>
+            <input
+              name="password"
+              type="password"
+              required
+              placeholder="Repita la contraseña"
+            />
+            <span class="material-symbols-outlined"> key </span>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Alias</label>
+            <input
+              type="text"
+              placeholder="Introduzca un alias (único)"
+              required
+            />
+            <span class="material-symbols-outlined" style="top: 46px">
+              account_circle
+            </span>
+          </div>
+          <div class="input-box">
+            <label>Foto de perfil</label>
+            <input type="file" id="real-file" hidden="hidden" />
+            <button type="button" id="custom-button">
+              SUBA SU FOTO DE PERFIL
+            </button>
+          </div>
+        </div>
+
+        <button type="submit">ÚNETE A LAZARUS</button>
+      </form>
+
+      <a href="#">¿Ya te has registrado? Inicia sesión</a>
+    </div>
+
+    <script type="text/javascript">
+      const realFileBtn = document.getElementById("real-file");
+      const customBtn = document.getElementById("custom-button");
+      const customTxt = document.getElementById("custom-text");
+
+      customBtn.addEventListener("click", function () {
+        realFileBtn.click();
+      });
+    </script>
+  </body>
+</html>
