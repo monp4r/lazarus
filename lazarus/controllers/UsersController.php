@@ -4,6 +4,8 @@ session_start();
 
 include_once '../models/User.php';
 
+include_once '../inc/helpers/input_helper.php';
+
 class UsersController extends User
 {
 
@@ -167,9 +169,9 @@ class UsersController extends User
     session_destroy();
     $this->RedirectLogin();
   }
- 
 
-  
+
+
 
 }
 
@@ -183,19 +185,19 @@ if (isset($_GET['action']) && $_GET['action'] == 'signup') {
   $ic->MostrarSignup();
 }
 
-if(isset($_GET['action']) && $_GET['action'] == 'logout'){
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {
   $ic = new UsersController();
   $ic->CerrarSesion();
 }
 
 if (isset($_POST['action']) && $_POST['action'] == 'signup') {
   $ic = new UsersController();
-  $ic->VerificarRegistro($_POST['fNombre'], $_POST['fAlias'], $_POST['fEmail'], $_POST['fPassword'], $_FILES['fProfileAvatar']);
+  $ic->VerificarRegistro(comprobar_entrada($_POST['fNombre']), comprobar_entrada($_POST['fAlias']), comprobar_entrada($_POST['fEmail']), comprobar_entrada($_POST['fPassword']), comprobar_entrada($_FILES['fProfileAvatar']));
 }
 
 if (isset($_POST['action']) && $_POST['action'] == 'login' && isset($_POST['fAlias_fEmail']) && isset($_POST['fPassword'])) {
   $ic = new UsersController();
-  $ic->VerificarLogin($_POST['fAlias_fEmail'], $_POST['fPassword']);
+  $ic->VerificarLogin(comprobar_entrada($_POST['fAlias_fEmail']), comprobar_entrada($_POST['fPassword']));
 }
 
 

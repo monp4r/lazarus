@@ -2,6 +2,8 @@
 
 session_start();
 
+include_once '../inc/helpers/input_helper.php';
+
 include_once '../models/Index.php';
 
 class IndexController extends Index
@@ -16,7 +18,6 @@ class IndexController extends Index
 }
 
 if(isset($_GET['action']) && $_GET['action'] == 'index'){
-
   $index = new IndexController();
   $index->MostarIndex();
 }
