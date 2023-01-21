@@ -9,7 +9,7 @@ class UsersController extends User
 
   public function Redirect()
   {
-    header("location: ../");
+    header("location: IndexController.php?action=index");
   }
 
   public function RedirectLogin()
@@ -103,7 +103,7 @@ class UsersController extends User
     }
 
     $this->GuardarUsuario();
-    # $this->Redirect();
+    $this->RedirectLogin();
 
   }
 
@@ -162,6 +162,11 @@ class UsersController extends User
     }
   }
 
+  public function CerrarSesion()
+  {
+    session_destroy();
+    $this->RedirectLogin();
+  }
  
 
   
@@ -169,23 +174,28 @@ class UsersController extends User
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'login') {
-  $instancia = new UsersController();
-  $instancia->MostrarLogin();
+  $ic = new UsersController();
+  $ic->MostrarLogin();
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'signup') {
-  $instancia = new UsersController();
-  $instancia->MostrarSignup();
+  $ic = new UsersController();
+  $ic->MostrarSignup();
+}
+
+if(isset($_GET['action']) && $_GET['action'] == 'logout'){
+  $ic = new UsersController();
+  $ic->CerrarSesion();
 }
 
 if (isset($_POST['action']) && $_POST['action'] == 'signup') {
-  $instancia = new UsersController();
-  $instancia->VerificarRegistro($_POST['fNombre'], $_POST['fAlias'], $_POST['fEmail'], $_POST['fPassword'], $_FILES['fProfileAvatar']);
+  $ic = new UsersController();
+  $ic->VerificarRegistro($_POST['fNombre'], $_POST['fAlias'], $_POST['fEmail'], $_POST['fPassword'], $_FILES['fProfileAvatar']);
 }
 
 if (isset($_POST['action']) && $_POST['action'] == 'login' && isset($_POST['fAlias_fEmail']) && isset($_POST['fPassword'])) {
-  $instancia = new UsersController();
-  $instancia->VerificarLogin($_POST['fAlias_fEmail'], $_POST['fPassword']);
+  $ic = new UsersController();
+  $ic->VerificarLogin($_POST['fAlias_fEmail'], $_POST['fPassword']);
 }
 
 

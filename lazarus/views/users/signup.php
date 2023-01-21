@@ -1,7 +1,7 @@
 <?php
 
   if (!empty($_SESSION['usr_id'])) {
-    header("location: ../index.php");
+    header("location: ../controllers/IndexController.php?action=index");
   }
 
   include_once '../inc/templates/auth_templates/signup_header.php';
