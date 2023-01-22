@@ -24,6 +24,11 @@ class UsersController extends User
     header("location: UsersController.php?action=signup");
   }
 
+  public function RedirectGestionarPerfil()
+  {
+    header("location: UsersController.php?action=edit_profile");
+  }
+
   public function MostrarLogin()
   {
     include_once '../views/users/login.php';
@@ -34,6 +39,11 @@ class UsersController extends User
     include_once '../views/users/signup.php';
   }
 
+  public function MostrarGestionarPerfil()
+  {
+    include_once '../views/users/edit_profile.php';
+  }
+
   public function RegistrarUsuario($fullName, $alias, $email, $password, $profilePic)
   {
 
@@ -42,67 +52,9 @@ class UsersController extends User
     $this->col_usr_email = $email;
     $this->col_usr_password = $password;
 
+    include_once '../inc/helpers/upload_helper.php';
 
-    // REVISAR Y SIMPLIFICAR CODIGO - SEPARAR DEL CONTROLADOR Y HACER INCLUDE ONCE CON METODOS
-
-    if ($profilePic['name'] == '') {
-      $this->col_user_profilePic = "../views/users/img_users/default.jpg";
-    } else {
-
-      // SIMPLIFICAR ESTO PARA QUE NO SEA TAN LARGO
-
-      $nom_fich_subido = $profilePic['name'];
-      $tipo_fich_img = strtolower(pathinfo($nom_fich_subido, PATHINFO_EXTENSION));
-
-      $dir_subida = "../views/users/img_users/";
-      $nom_fich_hash = hash('sha256', "user_pic" . $alias . $_SERVER['REQUEST_TIME'] . $profilePic['name']);
-      $nom_fich_subido = $dir_subida . $nom_fich_hash . '.' . $tipo_fich_img;
-
-      $uploadOK = 1;
-
-      $controlImagen = getimagesize($profilePic["tmp_name"]);
-
-      if ($controlImagen !== false) {
-        echo "El fichero es una imagen - " . $controlImagen["mime"] . ".";
-        $uploadOK = 1;
-      } else {
-        echo "El fichero no es una imagen.";
-        $uploadOK = 0;
-      }
-
-      // Comprobar si el fichero ya existe (en el servidor)
-      if (file_exists($nom_fich_subido)) {
-        echo "Lo siento, el fichero ya existe.";
-        $uploadOK = 0;
-      }
-
-      // Comprobar el tamaño de la imagen
-      if ($profilePic["size"] > 500000) {
-        echo "Lo siento, la imagen es muy grande.";
-        $uploadOK = 0;
-      }
-
-      // Permitir solo ciertos formatos de fichero
-      if ($tipo_fich_img != "jpg" && $tipo_fich_img != "png" && $tipo_fich_img != "jpeg" && $tipo_fich_img != "gif") {
-        echo "Lo siento, solo se permiten ficheros JPG, JPEG, PNG o GIF.";
-        $uploadOK = 0;
-      }
-
-      // Comprobar si ha habido algún error
-      if ($uploadOK == 0) {
-        echo "Lo siento, tu fichero no se ha subido. Se ha puesto la imagen por defecto.";
-        $this->col_user_profilePic = "../views/users/img_users/default.jpg";
-        // Si todo está bien, tratar de subir el fichero
-      } else {
-        if (copy($profilePic["tmp_name"], $nom_fich_subido)) {
-          echo "Se ha subido el fichero " . basename($profilePic["name"]);
-          $this->col_user_profilePic = $nom_fich_subido;
-        } else {
-          echo "Lo siento, ha habido un error subiendo tu fichero.";
-          $this->col_user_profilePic = "../views/users/img_users/default.jpg";
-        }
-      }
-    }
+    // MOSTRAR MENSAJE DE REGISTRO CORRECTO!!!
 
     $this->GuardarUsuario();
     $this->RedirectLogin();
@@ -115,6 +67,10 @@ class UsersController extends User
     $this->col_usr_alias = $alias;
     $this->col_usr_email = $email;
 
+    $_SESSION['reg_prov_fullName'] = $fullName;
+    $_SESSION['reg_prov_alias'] = $alias;
+    $_SESSION['reg_prov_email'] = $email;
+
     $usuario = $this->ConsultarUsuario($alias, $email);
 
     if ($usuario !== 'sin_datos') {
@@ -126,6 +82,7 @@ class UsersController extends User
       $this->RedirectSignup();
     } else {
       $this->RegistrarUsuario($fullName, $alias, $email, $password, $profilePic);
+      $_SESSION['is_prov_alias_email'] = $alias;
     }
 
   }
@@ -149,6 +106,8 @@ class UsersController extends User
     $this->aux_usr_alias_email = $alias_email;
     $this->col_usr_password = $password;
 
+    $_SESSION['is_prov_alias_email'] = $alias_email;
+
     $usuario = $this->ConsultarUsuario($alias_email, $alias_email);
 
     if ($usuario == 'sin_datos') {
@@ -170,14 +129,56 @@ class UsersController extends User
     $this->RedirectLogin();
   }
 
+  public function GuardarCambiosPerfil($profilePic, $alias)
+  {
 
+    $this->ActualizarUsuario();
 
+    include_once '../inc/helpers/upload_helper.php';
 
-}
+    $_SESSION['success'] = 'Perfil actualizado correctamente.';
+    $_SESSION['usr_alias'] = $this->col_usr_alias;
+    $_SESSION['usr_fullName'] = $this->col_usr_fullName;
+    $_SESSION['usr_profilePic'] = $this->col_user_profilePic;
 
-if (isset($_GET['action']) && $_GET['action'] == 'login') {
-  $ic = new UsersController();
-  $ic->MostrarLogin();
+    $this->RedirectGestionarPerfil();
+
+  }
+
+  public function VerificarCambiosPerfil($fullName, $alias, $password, $newPassword, $profilePic)
+  {
+
+    $this->col_usr_fullName = $fullName;
+    $this->col_usr_id = $_SESSION['usr_id'];
+
+    $usuarioActual = $this->ConsultarUsuarioPorId($this->col_usr_id);
+    $usuarioProv = $this->ConsultarUsuarioPorAlias($alias);
+           
+    if (isset($usuarioProv->col_usr_alias) && $usuarioProv->col_usr_alias != $usuarioActual->col_usr_alias) {
+      $_SESSION['error_alias'] = 'Alias ya registrado.';
+      $this->col_usr_alias = $_SESSION['usr_alias'];
+      #echo "<p>" .$_SESSION['error_alias'] ."</p>"; 
+    } else {
+      $this->col_usr_alias = $alias;
+    }
+     
+
+    if (!empty($newPassword)) {
+      if (password_verify($password, $usuarioActual->col_usr_password)) {
+        $this->col_usr_password = password_hash($newPassword, PASSWORD_ARGON2ID);
+      } else {
+        $_SESSION['error_password'] = 'Contraseña incorrecta.';
+        $this->RedirectGestionarPerfil();
+      }
+    } else {
+      $this->col_usr_password = $usuarioActual->col_usr_password;
+    }
+
+    $this->col_user_profilePic = $_SESSION['usr_profilePic'];
+
+    $this->GuardarCambiosPerfil($profilePic, $alias);
+
+  }
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'signup') {
@@ -185,19 +186,57 @@ if (isset($_GET['action']) && $_GET['action'] == 'signup') {
   $ic->MostrarSignup();
 }
 
+if (isset($_GET['action']) && $_GET['action'] == 'login') {
+  $ic = new UsersController();
+  $ic->MostrarLogin();
+}
+
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
   $ic = new UsersController();
   $ic->CerrarSesion();
 }
 
+if (isset($_GET['action']) && $_GET['action'] == 'profile') {
+  $ic = new UsersController();
+  #$ic->MostrarPerfil();
+}
+
+if (isset($_GET['action']) && $_GET['action'] == 'edit_profile') {
+  $ic = new UsersController();
+  $ic->MostrarGestionarPerfil();
+}
+
+
+
 if (isset($_POST['action']) && $_POST['action'] == 'signup') {
   $ic = new UsersController();
-  $ic->VerificarRegistro(comprobar_entrada($_POST['fNombre']), comprobar_entrada($_POST['fAlias']), comprobar_entrada($_POST['fEmail']), comprobar_entrada($_POST['fPassword']), comprobar_entrada($_FILES['fProfileAvatar']));
+  $ic->VerificarRegistro(
+    comprobar_entrada($_POST['fNombre']),
+    comprobar_entrada($_POST['fAlias']),
+    comprobar_entrada($_POST['fEmail']),
+    comprobar_entrada($_POST['fPassword']),
+    $_FILES['fProfileAvatar']
+  );
 }
 
 if (isset($_POST['action']) && $_POST['action'] == 'login' && isset($_POST['fAlias_fEmail']) && isset($_POST['fPassword'])) {
   $ic = new UsersController();
-  $ic->VerificarLogin(comprobar_entrada($_POST['fAlias_fEmail']), comprobar_entrada($_POST['fPassword']));
+  $ic->VerificarLogin(
+    comprobar_entrada($_POST['fAlias_fEmail']),
+    comprobar_entrada($_POST['fPassword'])
+  );
+}
+
+if (isset($_POST['action']) && $_POST['action'] == 'edit_profile') {
+  $ic = new UsersController();
+
+  $ic->VerificarCambiosPerfil(
+    comprobar_entrada($_POST['fNombre']),
+    comprobar_entrada($_POST['fAlias']),
+    comprobar_entrada($_POST['fPassword']),
+    comprobar_entrada($_POST['fNewPassword']),
+    $_FILES['fProfileAvatar']
+  );
 }
 
 

@@ -1,69 +1,63 @@
 <?php
 
-  if (!empty($_SESSION['usr_id'])) {
-    header("location: ../controllers/IndexController.php?action=index");
-  }
+include_once '../inc/templates/main_templates/main_header.php';
 
-  include_once '../inc/templates/auth_templates/signup_header.php';
+include_once '../inc/templates/main_templates/navbar.php';
+
 
 ?>
 
-<div class="signup">
-  
-  <h2>Regístrate en LAZARUS</h2>
-  <h3>Es muy fácil y sencillo</h3>
-    
-  <form method="POST" id="signupForm" action="UsersController.php" enctype="multipart/form-data" class="form">
-    <input type="hidden" name="action" value="signup">
+<div>
+
+  <?php if (isset($_SESSION['success'])) {
+    echo "<p>" . $_SESSION['success'] . "</p>";
+  }
+  ?>
+
+
+
+  <form method="POST" id="loginForm" action="UsersController.php" enctype="multipart/form-data" class="login-form">
+
+    <input type="hidden" name="action" value="edit_profile">
+
     <div class="column">
       <div class="input-box">
         <label>Nombre Completo</label>
         <input type="text" name="fNombre" id="fNombre" placeholder="Introduzca su nombre completo" required
-        value="<?php echo isset($_SESSION['reg_prov_fullName']) ? $_SESSION['reg_prov_fullName'] : '' ?>"
-        />
+          value="<?php echo isset($_SESSION['usr_fullName']) ? $_SESSION['usr_fullName'] : '' ?>" />
         <span class="material-symbols-outlined"> person </span>
       </div>
       <div class="input-box">
         <label>Alias</label>
-        <input type="text" name="fAlias" id="fAlias" placeholder="Introduzca un alias (único)" required
-        value="<?php echo isset($_SESSION['reg_prov_alias']) ? $_SESSION['reg_prov_alias'] : '' ?>"
-        
-        />
+        <input type="text" name="fAlias" id="fAlias" placeholder="Introduzca un alias (único)" required value="<?php echo isset($_SESSION['usr_alias']) ? $_SESSION['usr_alias'] : ''
+          ?>" />
         <?php
-          if (isset($_SESSION['error_alias'])) {
-            echo "<label id=\"fAlias-error\" class=\"error\" for=\"fAlias\">" . $_SESSION['error_alias'] . "</label>";
-            unset($_SESSION['error_alias']);
+        if (isset($_SESSION['error_alias'])) {
+          echo "<label id=\"fAlias-error\" class=\"error\" for=\"fAlias\">" . $_SESSION['error_alias'] . "</label>";
+          unset($_SESSION['error_alias']);
 
-          }
+        }
         ?>
         <span class="material-symbols-outlined">
           account_circle
         </span>
       </div>
     </div>
-    <div class="input-box">
-      <label>Correo electrónico</label>
-      <input type="email" name="fEmail" id="fEmail"
-        placeholder="Introduzca su correo eléctronico (único para cada cuenta)" required
-        value="<?php echo isset($_SESSION['reg_prov_email']) ? $_SESSION['reg_prov_email'] : '' ?>"
-        />
-      <?php
-        if (isset($_SESSION['error_email'])) {
-          echo "<label id=\"fEmail-error\" class=\"error\" for=\"fEmail\" style=\"margin-bottom: 10px !important;\">" . $_SESSION['error_email'] . "</label>";
-          unset($_SESSION['error_email']);
-        }
-      ?>
-      <span class="material-symbols-outlined"> email </span>
-    </div>
+
     <div class="column">
       <div class="input-box">
         <label>Contraseña</label>
-        <input type="password" name="fPassword" id="fPassword" required placeholder="Introduzca una contraseña" />
+        <input type="password" name="fPassword" id="fPassword" placeholder="Introduzca una contraseña" />
         <span class="material-symbols-outlined"> key </span>
       </div>
       <div class="input-box">
-        <label>Confirmar contraseña</label>
-        <input type="password" name="fCheckPassword" id="CheckPassword" required placeholder="Repita la contraseña" />
+        <label>Nueva contraseña</label>
+        <input type="password" name="fNewPassword" id="fNewPassword" placeholder="Repita la contraseña" />
+        <span class="material-symbols-outlined"> key </span>
+      </div>
+      <div class="input-box">
+        <label>Confirmar nueva contraseña</label>
+        <input type="password" name="fCheckNewPassword" id="fCheckNewPassword" placeholder="Repita la contraseña" />
         <span class="material-symbols-outlined"> key </span>
       </div>
     </div>
@@ -77,12 +71,13 @@
       </div>
     </div>
     <button type="submit">ÚNETE A LAZARUS</button>
+
   </form>
-  <a href="./UsersController.php?action=login">¿Ya te has registrado? Inicia sesión</a>
+
 </div>
 
 <script type="text/javascript">
-  
+
   const realFileBtn = document.getElementById("fProfileAvatar");
   const customBtn = document.getElementById("custom-button");
   const customTxt = document.getElementById("custom-text");
@@ -111,11 +106,17 @@
           minlength: 8,
           maxlength: 50
         },
-        fCheckPassword: {
+        fNewPassword: {
           required: true,
           minlength: 8,
           maxlength: 50,
-          equalTo: "#fPassword"
+
+        },
+        fCheckNewPassword: {
+          required: true,
+          minlength: 8,
+          maxlength: 50,
+          equalTo: "#fNewPassword"
         },
         fAlias: {
           required: true,
@@ -165,4 +166,7 @@
 
 </script>
 
-<?php include_once '../inc/templates/auth_templates/signup_footer.php'; ?>
+
+<?php
+include_once '../inc/templates/main_templates/main_footer.php';
+?>

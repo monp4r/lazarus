@@ -1,10 +1,11 @@
 <?php
 
-  if (!empty($_SESSION['usr_id'])) {
-    header("location: ../index.php");
-  }
+if (!empty($_SESSION['usr_id'])) {
+  header("location: ../controllers/IndexController.php?action=index");
+}
 
-  include_once '../inc/templates/auth_templates/login_header.php';
+
+include_once '../inc/templates/auth_templates/login_header.php';
 
 ?>
 
@@ -20,12 +21,12 @@
     <h3>Piensa, escribe, comparte</h3>
 
     <label class="error">
-      
+
       <?php
-        if (isset($_SESSION['error'])) {
-          echo $_SESSION['error'];
-          unset($_SESSION['error']);
-        }
+      if (isset($_SESSION['error'])) {
+        echo $_SESSION['error'];
+        unset($_SESSION['error']);
+      }
       ?>
 
     </label>
@@ -37,7 +38,8 @@
       <div class="textbox">
 
         <input type="text" name="fAlias_fEmail" id="fAlias_fEmail" required
-          placeholder="Introduzca su alias o correo electrónico" />
+          placeholder="Introduzca su alias o correo electrónico"
+          value="<?php echo isset($_SESSION['is_prov_alias_email']) ? $_SESSION['is_prov_alias_email'] : '' ?>" />
         <span class="material-symbols-outlined"> account_circle </span>
       </div>
 
