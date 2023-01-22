@@ -27,6 +27,8 @@ if (empty($_SESSION['usr_id'])) {
 
     <link rel="icon" type="image/x-icon" href="../public/img/auth_assets/lazarus_logo.svg">
 
+    <script src="../public/js/jquery-3.6.3.min.js"></script>
+
     <title> Inicio / Lazarus</title>
   </head>
   <body>

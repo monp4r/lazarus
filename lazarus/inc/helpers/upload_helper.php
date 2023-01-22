@@ -1,7 +1,5 @@
 <?php 
 
-
-  
   $nom_fich_subido = $profilePic['name'];
   $tipo_fich_img = strtolower(pathinfo($nom_fich_subido, PATHINFO_EXTENSION));
 
@@ -10,7 +8,6 @@
   $nom_fich_subido = $dir_subida . $nom_fich_hash . '.' . $tipo_fich_img;
 
   $uploadOK = 1;
-
 
   $controlImagen = getimagesize($profilePic["tmp_name"]);
 
