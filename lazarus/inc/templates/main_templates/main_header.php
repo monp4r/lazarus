@@ -30,7 +30,7 @@ if (empty($_SESSION['usr_id'])) {
       <script src="../public/js/jquery.validate.js"></script>
 
       <!-- Importamos Icono Lazarus -->
-      <link rel="icon" type="image/x-icon" href="../public/img/auth_assets/lazarus_logo.svg">
+      <link rel="icon" type="image/x-icon" href="../public/img/lazarus_logo.svg">
 
     <title> Inicio / Lazarus</title>
   </head>

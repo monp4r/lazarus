@@ -11,7 +11,7 @@ class UsersController extends User
 
   public function Redirect()
   {
-    header("location: IndexController.php?action=index");
+    header("location: IndexController.php?action=index", 303);
   }
 
   public function RedirectLogin()

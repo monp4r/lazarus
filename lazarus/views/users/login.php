@@ -14,7 +14,7 @@ include_once '../inc/templates/auth_templates/login_header.php';
   <div class="login">
 
     <div class="logo">
-      <img src="../public/img/auth_assets/lazarus_logo.svg" alt="Logo LAZARUS">
+      <img src="../public/img/lazarus_logo.svg" alt="Logo LAZARUS">
     </div>
 
     <h2>LAZARUS</h2>
