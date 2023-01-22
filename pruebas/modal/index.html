@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitter Tweet Box UI Design | CodingNepal</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://tailwindui.com/v2-assets/components.css?id=66a3d921db337ae7a7c107d5cf04d6c0"
+    />
+    <script src="https://tailwindui.com/v2-assets/components.js?id=c42e44f6c92eb7517e1a4e8bd13028a6"></script>
+    <script
+      src="https://tailwindui.com/js/alpine.js?id=8abb7fc694f5ad35a20d19a7cae8cb7e"
+      defer=""
+    ></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="input-box">
+        <div class="tweet-area">
+          <span class="placeholder">Escribe un mensaje</span>
+          <div
+            class="input editable"
+            contenteditable="true"
+            spellcheck="false"
+          ></div>
+          <div
+            class="input readonly"
+            contenteditable="true"
+            spellcheck="false"
+          ></div>
+        </div>
+        <div class="flex items-center justify-center text-gray-500 h-screen" ">
+        <!-- SI PONEMOS LA SUBIDA DE IMAGENES SE DESACTIVA EL BOTÓN-->
+        <!--<div class="w-full" style="max-width: 500px">
+          <div class="w-full max-w-2xl p-8 mx-auto bg-black rounded-lg">
+            <div class="" x-data="imageData()">
+              <div x-show="previewUrl == ''">
+                <p class="text-center uppercase text-bold">
+                  <label for="thumbnail" class="cursor-pointer">
+                    Upload a file
+                  </label>
+                  <input
+                    type="file"
+                    name="thumbnail"
+                    id="thumbnail"
+                    class="hidden"
+                    @change="updatePreview()"
+                  />
+                </p>
+              </div>
+              <div x-show="previewUrl !== ''">
+                <img :src="previewUrl" alt="" class="rounded" />
+                <div class="">
+                  <button type="button" class="" @click="clearPreview()">
+                    Borrar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
+      </div>
+
+      <div class="bottom">
+        <ul class="icons">
+          <li><i class="far fa-file-image"></i></li>
+        </ul>
+        <div class="content">
+          <span class="counter">150</span>
+          <button>Publicar mensaje</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
