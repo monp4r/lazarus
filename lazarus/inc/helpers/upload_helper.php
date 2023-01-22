@@ -1,8 +1,6 @@
 <?php 
 
-if ( $profilePic['size'] == 0 && $profilePic['error'] == 0 && $_SESSION['usr_profilePic'] == '../views/users/img_users/default.jpg' && empty( getimagesize($profilePic["tmp_name"]))) {
-  $this->col_user_profilePic = "../views/users/img_users/default.jpg";
-} else {
+
   
   $nom_fich_subido = $profilePic['name'];
   $tipo_fich_img = strtolower(pathinfo($nom_fich_subido, PATHINFO_EXTENSION));
@@ -60,6 +58,6 @@ if ( $profilePic['size'] == 0 && $profilePic['error'] == 0 && $_SESSION['usr_pro
       $this->col_user_profilePic = "../views/users/img_users/default.jpg";
     }
   }
-}
+
 
 ?>
