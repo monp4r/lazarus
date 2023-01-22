@@ -18,9 +18,9 @@ if (empty($_SESSION['usr_id'])) {
       <!-- Importamos Tailwind CSS -->
       <link
         rel="stylesheet"
-        href="../public/css/componentes_tailwind.css"
+        href="../public/css/tailwind_components.css"
       />
-      <script src="../public/js/componentes_tailwind.js"></script>
+      <script src="../public/js/tailwind_components.js"></script>
       
       <!-- Importamos Alpine JS -->
       <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
