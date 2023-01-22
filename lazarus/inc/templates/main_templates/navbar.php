@@ -69,7 +69,7 @@ Heroicon name: outline/x-mark" x-state:on="Menu open" x-state:off="Menu closed" 
       <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" x-state-description='undefined: "bg-gray-900 text-white", undefined: "text-gray-300 hover:bg-gray-700 hover:text-white"'>Seguidos</a>
 
       <!-- Input de busqueda -->
-      <div class="pt-2 relative mx-auto text-gray-600 input-busqueda">
+      <div class="pt-2 relative mx-auto text-gray-600 input-busqueda" style="left: 10px;">
               <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm
               live_search" type="text" name="live_search"  autocomplete="off" placeholder="Buscar Usuarios ..." >
               <div class="searchresult"></div>
