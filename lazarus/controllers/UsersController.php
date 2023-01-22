@@ -238,6 +238,3 @@ if (isset($_POST['action']) && $_POST['action'] == 'edit_profile') {
     $_FILES['fProfileAvatar']
   );
 }
-
-
-?>
