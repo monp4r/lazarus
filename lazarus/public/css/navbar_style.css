@@ -1,0 +1,15 @@
+nav {
+  background-color: #111820;
+}
+
+.input-busqueda {
+  top: -5px;
+}
+
+.searchresult {
+  box-shadow: 10px 5px 5px black;
+}
+.live_search {
+  height: 32px;
+  border-color: #111820;
+}

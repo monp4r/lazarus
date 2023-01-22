@@ -1,4 +1,5 @@
-<nav x-data="{ open: false }" style="background-color: #111820">
+<link rel="stylesheet" type="text/css" href="../public/css/navbar_style.css" media="screen" />
+<nav x-data="{ open: false }">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -30,9 +31,11 @@ Heroicon name: outline/x-mark" x-state:on="Menu open" x-state:off="Menu closed" 
 
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" x-state-description='undefined: "bg-gray-900 text-white", undefined: "text-gray-300 hover:bg-gray-700 hover:text-white"'>Seguidos</a>
 
-            <div class="pt-2 relative mx-auto text-gray-600" style="top:-5px;  ">
-              <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm" type="text" name="live_search" id="live_search" autocomplete="off" placeholder="Buscar Usuarios ..." style="height: 32px; border-color: #111820; ">
-              <div id="searchresult" style="box-shadow: 10px 5px 5px black;"></div>
+            <!-- Input de busqueda -->
+            <div class="pt-2 relative mx-auto text-gray-600 input-busqueda">
+              <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm
+              live_search" type="text" name="live_search"  autocomplete="off" placeholder="Buscar Usuarios ..." >
+              <div class="searchresult"></div>
             </div>
 
           </div>
@@ -65,22 +68,21 @@ Heroicon name: outline/x-mark" x-state:on="Menu open" x-state:off="Menu closed" 
 
       <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" x-state-description='undefined: "bg-gray-900 text-white", undefined: "text-gray-300 hover:bg-gray-700 hover:text-white"'>Seguidos</a>
 
-      <div class="pt-2 relative mx-auto text-gray-600" style="top:-5px;  ">
-        <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm" class="live_search" type="text" name="live_search2" id="live_search2" autocomplete="off" placeholder="Buscar Usuarios ..." style="height: 32px; border-color: #111820; ">
-        <div id="searchresult2" style="box-shadow: 10px 5px 5px black;"></div>
-      </div>
+      <!-- Input de busqueda -->
+      <div class="pt-2 relative mx-auto text-gray-600 input-busqueda">
+              <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm
+              live_search" type="text" name="live_search"  autocomplete="off" placeholder="Buscar Usuarios ..." >
+              <div class="searchresult"></div>
+            </div>
 
     </div>
   </div>
 
   <script type="text/javascript">
 
-    // VER PORQUE NO FUNCIONAN PARA ELEMENTOS DE LA MISMA CLASE
-
     $(document).ready(function() {
-      $('#live_search').keyup(function() {
+      $('.live_search').keyup(function() {
         var input = $(this).val();
-        //alert(input);
         if (input != "") {
           $.ajax({
             url: "../inc/helpers/livesearch.php",
@@ -89,45 +91,21 @@ Heroicon name: outline/x-mark" x-state:on="Menu open" x-state:off="Menu closed" 
               input: input
             },
             success: function(data) {
-              $('#searchresult').html(data);
+              $('.searchresult').html(data);
             }
           })
         } else {
-          $('#searchresult').html("");
+          $('.searchresult').html("");
         }
       });
 
-
-    });
-
-    $(document).ready(function() {
-      $('#live_search2').keyup(function() {
-        var input = $(this).val();
-        //alert(input);
-        if (input != "") {
-          $.ajax({
-            url: "../inc/helpers/livesearch.php",
-            method: "POST",
-            data: {
-              input: input
-            },
-            success: function(data) {
-              $('#searchresult2').html(data);
-            }
-          })
-        } else {
-          $('#searchresult2').html("");
-        }
-      });
 
 
     });
 
     $(document).click(function() {
-      $('#searchresult2').html("");
-      $('#searchresult').html("");
-      $('#live_search').val("");
-      $('#live_search2').val("");
+      $('.searchresult').html("");
+      $('.live_search').val("");
     });
   </script>
 </nav>
