@@ -9,27 +9,29 @@ if (empty($_SESSION['usr_id'])) {
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <style data-merge-styles="true"></style>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      href="https://tailwindui.com/v2-assets/components.css?id=66a3d921db337ae7a7c107d5cf04d6c0"
-    />
-    <script src="https://tailwindui.com/v2-assets/components.js?id=c42e44f6c92eb7517e1a4e8bd13028a6"></script>
-    <script
-      src="https://tailwindui.com/js/alpine.js?id=8abb7fc694f5ad35a20d19a7cae8cb7e"
-      defer=""
-    ></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Importamos hojas de estilo y scripts -->
+    
+      <!-- Importamos Tailwind CSS -->
+      <link
+        rel="stylesheet"
+        href="../public/css/componentes_tailwind.css"
+      />
+      <script src="../public/js/componentes_tailwind.js"></script>
+      
+      <!-- Importamos Alpine JS -->
+      <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <link rel="icon" type="image/x-icon" href="../public/img/auth_assets/lazarus_logo.svg">
+      <!-- Importamos JQuery y JQuery Validator -->
+      <script src="../public/js/jquery-3.6.3.min.js"></script>
+      <script src="../public/js/jquery.validate.js"></script>
 
-    <script src="../public/js/jquery-3.6.3.min.js"></script>
+      <!-- Importamos Icono Lazarus -->
+      <link rel="icon" type="image/x-icon" href="../public/img/auth_assets/lazarus_logo.svg">
 
     <title> Inicio / Lazarus</title>
   </head>
   <body>
-  
