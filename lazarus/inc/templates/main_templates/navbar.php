@@ -1,3 +1,4 @@
+<script type="text/javascript" src="../public/js/user_search.js"></script>
 <link rel="stylesheet" type="text/css" href="../public/css/navbar_style.css" media="screen" />
 <nav x-data="{ open: false }">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -5,7 +6,7 @@
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
 
         <!-- Botón Hamburguesa para versiones móviles -->
-        <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="menu-disp-movil" @click="open = !open" aria-expanded="false" x-bind:aria-expanded="open.toString()">
+        <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="menu-disp-movil" @click="open = !open" >
 
           <!-- Icono de la hamburguesa para abrir -->
           <svg class="block h-6 w-6" :class="{ 'hidden': open, 'block': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -32,9 +33,9 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
 
-            <a href="IndexController.php?action=index" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" x-state-description='undefined: "bg-gray-900 text-white", undefined: "text-gray-300 hover:bg-gray-700 hover:text-white"'>Inicio</a>
+            <a href="IndexController.php?action=index" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" >Inicio</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" x-state-description='undefined: "bg-gray-900 text-white", undefined: "text-gray-300 hover:bg-gray-700 hover:text-white"'>Seguidos</a>
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" >Seguidos</a>
 
 
             <!-- Input de busqueda -->
@@ -42,7 +43,7 @@
               <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm
               live_search" type="text" name="live_search" autocomplete="off" placeholder="Buscar Usuarios ...">
 
-              <div class="searchresult"></div>
+              <div class="searchresult" ></div>
 
             </div>
 
@@ -52,11 +53,11 @@
 
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
-        <!-- Desplegable del Perfil -->
+        <!-- Desplegable del Perfil del Usuario -->
         <div x-data="Components.menu({ open: false })" x-init="init()" @keydown.escape.stop="open = false; focusButton()" @click.away="onClickAway($event)" class="relative ml-3">
           <div>
             <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="desplegable-usuario" x-ref="button" @click="onButtonClick()">
-              <img class="h-8 w-8 rounded-full" style="width:35px;" src="<?php echo $_SESSION['usr_profilePic']; ?>" alt="" />
+              <img class="h-8 w-8 rounded-full" style="width:35px;" src="<?php echo $_SESSION['usr_profilePic']; ?>" alt="<?php echo $_SESSION['usr_fullName']; ?>" />
             </button>
           </div>
 
@@ -88,9 +89,5 @@
       </div>
 
     </div>
-  </div>
-
-  <script type="text/javascript" src="../public/js/user_search.js">
-
-  </script>
+  </div>  
 </nav>
