@@ -67,9 +67,6 @@ class UsersController extends User
   public function VerificarRegistro($fullName, $alias, $email, $password, $profilePic)
   {
 
-    $this->col_usr_alias = $alias;
-    $this->col_usr_email = $email;
-
     $_SESSION['reg_prov_fullName'] = $fullName;
     $_SESSION['reg_prov_alias'] = $alias;
     $_SESSION['reg_prov_email'] = $email;
@@ -77,10 +74,10 @@ class UsersController extends User
     $usuario = $this->ConsultarUsuario($alias, $email);
 
     if ($usuario !== 'sin_datos') {
-      if ($usuario->col_usr_alias == $this->col_usr_alias) {
+      if ($usuario->col_usr_alias == $alias) {
         $_SESSION['error_alias'] = 'Alias ya registrado.';
       }
-      if ($usuario->col_usr_email == $this->col_usr_email)
+      if ($usuario->col_usr_email == $email)
         $_SESSION['error_email'] = 'Email ya registrado.';
       $this->RedirectSignup();
     } else {
@@ -222,7 +219,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'signup') {
   );
 }
 
-if (isset($_POST['action']) && $_POST['action'] == 'login' && isset($_POST['fAlias_fEmail']) && isset($_POST['fPassword'])) {
+if (isset($_POST['action']) && $_POST['action'] == 'login') {
   $ic = new UsersController();
   $ic->VerificarLogin(
     comprobar_entrada($_POST['fAlias_fEmail']),
