@@ -20,6 +20,15 @@ include_once '../inc/templates/auth_templates/login_header.php';
     <h2>LAZARUS</h2>
     <h3>Piensa, escribe, comparte</h3>
 
+    <label class="success">
+      <?php
+      if (isset($_SESSION['success'])) {
+        echo $_SESSION['success'];
+        unset($_SESSION['success']);
+      }
+      ?>
+    </label>
+
     <label class="error">
 
       <?php
@@ -27,6 +36,7 @@ include_once '../inc/templates/auth_templates/login_header.php';
         echo $_SESSION['error'];
         unset($_SESSION['error']);
       }
+
       ?>
 
     </label>
@@ -37,9 +47,7 @@ include_once '../inc/templates/auth_templates/login_header.php';
 
       <div class="textbox">
 
-        <input type="text" name="fAlias_fEmail" id="fAlias_fEmail" required
-          placeholder="Introduzca su alias o correo electrónico"
-          value="<?php echo isset($_SESSION['is_prov_alias_email']) ? $_SESSION['is_prov_alias_email'] : '' ?>" />
+        <input type="text" name="fAlias_fEmail" id="fAlias_fEmail" required placeholder="Introduzca su alias o correo electrónico" value="<?php echo isset($_SESSION['is_prov_alias_email']) ? $_SESSION['is_prov_alias_email'] : '' ?>" />
         <span class="material-symbols-outlined"> account_circle </span>
       </div>
 
@@ -59,13 +67,12 @@ include_once '../inc/templates/auth_templates/login_header.php';
 </div>
 
 <script type="text/javascript">
-
   if ($(window).width() < 450) {
     $('#fAlias_fEmail').attr('placeholder', 'Alias / Correo electrónico');
     $('#fPassword').attr('placeholder', 'Contraseña');
   }
 
-  $(document).ready(function () {
+  $(document).ready(function() {
 
     $('#loginForm').validate({
       errorClass: "error",
@@ -95,7 +102,6 @@ include_once '../inc/templates/auth_templates/login_header.php';
       }
     });
   });
-
 </script>
 
 <?php include_once '../inc/templates/auth_templates/login_footer.php'; ?>

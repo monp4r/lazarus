@@ -54,8 +54,11 @@ class UsersController extends User
 
     include_once '../inc/helpers/upload_helper.php';
 
-    // MOSTRAR MENSAJE DE REGISTRO CORRECTO!!!
+    unset($_SESSION['reg_prov_fullName']);
+    unset($_SESSION['reg_prov_alias']);
+    unset($_SESSION['reg_prov_email']);
 
+    $_SESSION['success'] = 'Perfil registrado correctamente. Inicie sesión.';
     $this->GuardarUsuario();
     $this->RedirectLogin();
 

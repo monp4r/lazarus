@@ -63,7 +63,7 @@ body {
 
 .signup .form .input-box span {
   position: absolute;
-  top: 50px;
+  top: 47px;
   left: 16px;
   color: rgba(255, 255, 255, 0.38);
 }
@@ -155,6 +155,6 @@ input:focus {
 }
 
 .error {
-  color: red !important;
+  color: #cc0000 !important;
   margin-bottom: 10px !important;
 }
