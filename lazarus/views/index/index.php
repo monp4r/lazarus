@@ -2,43 +2,37 @@
 
 <?php include_once '../inc/templates/main_templates/navbar.php'; ?>
 
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../public/js/image_validation.js"></script>
+<link rel="stylesheet" href="../public/css/index_style.css" />
 
-<div class="content">
-
-  <?php
-
-  #echo '<p>' . $_SESSION['usr_id'] . '</p>' . "<br>";
-  #echo '<p>' . $_SESSION['usr_email'] . '</p>' . "<br>";
-  #echo '<p>' . $_SESSION['usr_alias'] . '</p>' . "<br>";
-  #echo '<p>' . $_SESSION['usr_fullName'] . '</p>' . "<br>";
-  #echo '<p>' . $_SESSION['usr_profilePic'] . '</p>' . "<br>";
-  #echo '<p>' . $_SESSION['usr_createdAt'] . '</p>' . "<br>";
-
-  ?>
+<div class="bg-gray-100 content">
 
   <?php
 
-    if(isset($_SESSION['img_msg_error'])){
-      echo '<p>' . $_SESSION['img_msg_error'] . '</p>';
-      unset($_SESSION['img_msg_error']);
-    }
+  if (isset($_SESSION['img_msg_error'])) {
+    echo '<p>' . $_SESSION['img_msg_error'] . '</p>';
+    unset($_SESSION['img_msg_error']);
+  }
 
-    if(isset($_SESSION['text_msg_error'])){
-      echo '<p>' . $_SESSION['text_msg_error'] . '</p>';
-      unset($_SESSION['text_msg_error']);
-    }
+  if (isset($_SESSION['text_msg_error'])) {
+    echo '<p>' . $_SESSION['text_msg_error'] . '</p>';
+    unset($_SESSION['text_msg_error']);
+  }
 
-    if(isset($_SESSION['msg_success'])){
-      echo '<p>' . $_SESSION['msg_success'] . '</p>';
-      unset($_SESSION['msg_success']);
-    }
+  if (isset($_SESSION['msg_success'])) {
+    echo '<p>' . $_SESSION['msg_success'] . '</p>';
+    unset($_SESSION['msg_success']);
+  }
 
-    if(isset($_SESSION['contexto_seguimiento'])){
-      echo '<p>' . $_SESSION['contexto_seguimiento'] . '</p>';
-      unset($_SESSION['contexto_seguimiento']);
-    }
-    
+  if (isset($_SESSION['contexto_seguimiento'])) {
+    echo '<p>' . $_SESSION['contexto_seguimiento'] . '</p>';
+    unset($_SESSION['contexto_seguimiento']);
+  }
+
   ?>
+
+
 
   <form method="POST" id="messageForm" action="MessagesController.php" enctype="multipart/form-data" class="form">
     <input type="hidden" name="action" value="post_message">
@@ -58,15 +52,16 @@
       <div class="input-box">
         <label>Foto mensaje </label>
         <input type="file" name="fImagen" id="fImagen" />
+        <label id="image_error"></label>
       </div>
     </div>
 
-    <button type="submit">SUBIR MENSAJE</button>
+    <button type="submit" id="submit_message">SUBIR MENSAJE</button>
   </form>
 
   <form method="POST" id="followForm" action="FollowController.php" enctype="multipart/form-data" class="form">
     <input type="hidden" name="action" value="follow_user">
-    <h1>SEGUIR A USUARIO</h1>
+    <h1>SEGUIR A USUARIO MENSAJE</h1>
 
     <div class="column">
       <div class="input-box">
@@ -77,11 +72,10 @@
         </span>
       </div>
     </div>
-    
+
     <button type="submit">SEGUIR AL USUARIO INTRODUCIDO</button>
   </form>
 
 </div>
-
 
 <?php include_once '../inc/templates/main_templates/main_footer.php'; ?>

@@ -70,13 +70,14 @@
     <div class="column">
       <div class="input-box">
         <label>Foto de perfil (opcional)</label>
-        <input type="file" name="fProfileAvatar" id="fProfileAvatar" hidden="hidden" />
+        <input type="file" name="fProfileAvatar" id="fProfileAvatar" hidden="hidden" accept="image/*"/>
         <button type="button" id="custom-button">
           SUBA SU FOTO DE PERFIL
         </button>
+        <label id="image_error" class="error"></label>
       </div>
     </div>
-    <button type="submit">ÚNETE A LAZARUS</button>
+    <button type="submit" id="submit_user">ÚNETE A LAZARUS</button>
   </form>
   <a href="./UsersController.php?action=login">¿Ya te has registrado? Inicia sesión</a>
 </div>

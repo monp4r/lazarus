@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../public/css/signup_style.css" />
   <script src="../public/js/jquery-3.6.3.min.js"></script>
   <script src="../public/js/jquery.validate.js"></script>
+  <script src="../public/js/image_validation.js"></script>
+
 
   <link rel="apple-touch-icon" sizes="180x180" href="../public/img/favicons/apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="../public/img/favicons/favicon-32x32.png">

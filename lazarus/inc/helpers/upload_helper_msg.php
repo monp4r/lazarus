@@ -18,6 +18,7 @@
     echo "El fichero no es una imagen.";
     $uploadOK = 0;
   }
+  
 
   // Comprobar si el fichero ya existe (en el servidor)
   if (file_exists($nom_fich_subido)) {
@@ -26,7 +27,7 @@
   }
 
   // Comprobar el tamaño de la imagen
-  if ($profilePic["size"] > 500000) {
+  if ($profilePic["size"] > 8388608) {
     echo "Lo siento, la imagen es muy grande.";
     $uploadOK = 0;
   }

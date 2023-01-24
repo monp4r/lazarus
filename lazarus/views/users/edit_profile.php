@@ -64,7 +64,7 @@ include_once '../inc/templates/main_templates/navbar.php';
     <div class="column">
       <div class="input-box">
         <label>Foto de perfil (opcional)</label>
-        <input type="file" name="fProfileAvatar" id="fProfileAvatar" hidden="hidden" />
+        <input type="file" name="fProfileAvatar" id="fProfileAvatar" hidden="hidden" accept="image/*" />
         <button type="button" id="custom-button">
           SUBA SU FOTO DE PERFIL
         </button>

@@ -7,7 +7,7 @@ if (empty($_SESSION['usr_id'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="night">
   <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,15 +15,13 @@ if (empty($_SESSION['usr_id'])) {
     
     <!-- Importamos hojas de estilo y scripts -->
     
-      <!-- Importamos Tailwind CSS -->
+      <!-- Importamos Daisy UI -->
       <link
-        rel="stylesheet"
-        href="../public/css/tailwind_components.css"
-      />
-      <script src="../public/js/tailwind_components.js"></script>
-      
-      <!-- Importamos Alpine JS -->
-      <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.47.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
 
       <!-- Importamos JQuery y JQuery Validator -->
       <script src="../public/js/jquery-3.6.3.min.js"></script>
@@ -37,4 +35,4 @@ if (empty($_SESSION['usr_id'])) {
 
     <title> Inicio / Lazarus</title>
   </head>
-  <body>
+  <body class="bg-[#111820]">
