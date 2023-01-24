@@ -61,7 +61,6 @@ class UsersController extends User
     $_SESSION['success'] = 'Perfil registrado correctamente. Inicie sesión.';
     $this->GuardarUsuario();
     $this->RedirectLogin();
-
   }
 
   public function VerificarRegistro($fullName, $alias, $email, $password, $profilePic)
@@ -84,7 +83,6 @@ class UsersController extends User
       $this->RegistrarUsuario($fullName, $alias, $email, $password, $profilePic);
       $_SESSION['is_prov_alias_email'] = $alias;
     }
-
   }
 
   public function IniciarSesion($usuario)
@@ -96,7 +94,6 @@ class UsersController extends User
     $_SESSION['usr_profilePic'] = $usuario->col_user_profilePic;
     $_SESSION['usr_createdAt'] = $usuario->col_usr_createdAt;
 
-    unset($_SESSION['error']);
     $this->Redirect();
   }
 
@@ -142,7 +139,6 @@ class UsersController extends User
     $_SESSION['usr_profilePic'] = $this->col_user_profilePic;
 
     $this->RedirectGestionarPerfil();
-
   }
 
   public function VerificarCambiosPerfil($fullName, $alias, $password, $newPassword, $profilePic)
@@ -153,15 +149,14 @@ class UsersController extends User
 
     $usuarioActual = $this->ConsultarUsuarioPorId($this->col_usr_id);
     $usuarioProv = $this->ConsultarUsuarioPorAlias($alias);
-           
+
     if (isset($usuarioProv->col_usr_alias) && $usuarioProv->col_usr_alias != $usuarioActual->col_usr_alias) {
       $_SESSION['error_alias'] = 'Alias ya registrado.';
       $this->col_usr_alias = $_SESSION['usr_alias'];
-      #echo "<p>" .$_SESSION['error_alias'] ."</p>"; 
     } else {
       $this->col_usr_alias = $alias;
     }
-     
+
 
     if (!empty($newPassword)) {
       if (password_verify($password, $usuarioActual->col_usr_password)) {
@@ -177,9 +172,12 @@ class UsersController extends User
     $this->col_user_profilePic = $_SESSION['usr_profilePic'];
 
     $this->GuardarCambiosPerfil($profilePic, $alias);
-
   }
+
+
 }
+
+// Tratamiento de HTTP GET
 
 if (isset($_GET['action']) && $_GET['action'] == 'signup') {
   $ic = new UsersController();
@@ -206,7 +204,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit_profile') {
   $ic->MostrarGestionarPerfil();
 }
 
-
+// Tratamiento de HTTP POST
 
 if (isset($_POST['action']) && $_POST['action'] == 'signup') {
   $ic = new UsersController();
@@ -238,3 +236,5 @@ if (isset($_POST['action']) && $_POST['action'] == 'edit_profile') {
     $_FILES['fProfileAvatar']
   );
 }
+
+

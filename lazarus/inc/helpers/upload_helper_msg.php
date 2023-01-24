@@ -11,8 +11,6 @@
 
   $controlImagen = getimagesize($profilePic["tmp_name"]);
 
-
-
   if ($controlImagen !== false) {
     echo "El fichero es una imagen - " . $controlImagen["mime"] . ".";
     $uploadOK = 1;

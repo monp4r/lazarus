@@ -21,7 +21,6 @@ class MessagesController extends Message
     $this->col_usrPost_user = $id;
 
     if (!(strlen($texto) > 1 && strlen($texto) < 150)) {
-      echo '<p> El texto del mensaje debe tener entre 1 y 150 caracteres. </p>';
       $_SESSION['text_msg_error'] = 'El texto del mensaje debe tener entre 1 y 150 caracteres.';
     } else {
       $this->col_usrPost_text = $texto;
@@ -32,14 +31,12 @@ class MessagesController extends Message
     }
 
     // REDIRIGIR A INDEX O PARTE DE MENSAJES??
-    if (isset($_SESSION['img_msg_error']) || isset($_SESSION['text_msg_error'])) {
-      $this->RedirectIndex();
-    } 
-    else {
+    if (!(isset($_SESSION['img_msg_error']) || isset($_SESSION['text_msg_error']))) {
       $this->GuardarMensaje();
       $_SESSION['msg_success'] = 'Mensaje subido correctamente.';
-      $this->RedirectIndex();
     }
+    
+    $this->RedirectIndex();
   }
 }
 

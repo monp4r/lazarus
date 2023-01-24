@@ -84,7 +84,6 @@ class User{
 
   }
 
-
   protected function ConsultarUsuarioPorId($id){
     include_once '../config/Connection.php';
     $ic = new Connection();

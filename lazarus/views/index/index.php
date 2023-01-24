@@ -32,11 +32,18 @@
       echo '<p>' . $_SESSION['msg_success'] . '</p>';
       unset($_SESSION['msg_success']);
     }
+
+    if(isset($_SESSION['contexto_seguimiento'])){
+      echo '<p>' . $_SESSION['contexto_seguimiento'] . '</p>';
+      unset($_SESSION['contexto_seguimiento']);
+    }
     
   ?>
 
   <form method="POST" id="messageForm" action="MessagesController.php" enctype="multipart/form-data" class="form">
     <input type="hidden" name="action" value="post_message">
+    <h1>PUBLICAR MENSAJE</h1>
+
     <div class="column">
       <div class="input-box">
         <label>Mensaje de texto</label>
@@ -47,16 +54,32 @@
       </div>
     </div>
 
-
     <div class="column">
       <div class="input-box">
         <label>Foto mensaje </label>
         <input type="file" name="fImagen" id="fImagen" />
       </div>
     </div>
+
     <button type="submit">SUBIR MENSAJE</button>
   </form>
 
+  <form method="POST" id="followForm" action="FollowController.php" enctype="multipart/form-data" class="form">
+    <input type="hidden" name="action" value="follow_user">
+    <h1>SEGUIR A USUARIO</h1>
+
+    <div class="column">
+      <div class="input-box">
+        <label>Usuario a seguir</label>
+        <input type="text" name="fUsuarioASeguir" id="fUsuarioASeguir" placeholder="Introduzca el usuario a seguir" required />
+        <span class="material-symbols-outlined">
+          account_circle
+        </span>
+      </div>
+    </div>
+    
+    <button type="submit">SEGUIR AL USUARIO INTRODUCIDO</button>
+  </form>
 
 </div>
 
