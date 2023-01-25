@@ -14,6 +14,11 @@ class IndexController extends Index
     include_once '../views/index/index.php';
   }
 
+  public function RedirectIndex()
+  {
+    header("location: IndexController.php?action=index", true, 303);
+  }
+
 
 }
 

@@ -21,8 +21,13 @@ myText.addEventListener("input", function() {
   result.textContent = currentLength + "/" + limit;
 
   if (currentLength > limit) {
-    result.style.borderColor = "red";
-    result.style.color = "red";
     document.getElementById("submit_message").disabled = true;
+    result.style.borderColor = "#cc0000";
+    result.style.color = "#cc0000";
+    
+  }else{
+    document.getElementById("submit_message").disabled = false;
+    result.style.borderColor = "white";
+    result.style.color = "white";
   }
 });

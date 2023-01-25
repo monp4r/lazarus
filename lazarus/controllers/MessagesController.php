@@ -11,7 +11,7 @@ class MessagesController extends Message
 
   public function RedirectIndex()
   {
-    header("location: IndexController.php?action=index");
+    header("location: IndexController.php?action=index", true, 303);
   }
 
   public function VerificarSubidaMensaje($texto, $profilePic)

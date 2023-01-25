@@ -14,9 +14,9 @@
       </ul>
     </div>
     <div class="avatar"></div>
-    <a class="btn btn-ghost normal-case text-xl" style="margin-left: 20px">
-      LAZARUS
-      <div class="w-8 ml-3">
+    <a class="btn btn-ghost normal-case text-xl ">
+      
+      <div class="w-8 ml-3 -ml-1">
         <img src="../public/img/lazarus_logo.svg" />
       </div>
     </a>
@@ -45,12 +45,12 @@
     <div class="dropdown dropdown-end ">
       <label tabindex="0" class="btn btn-ghost btn-circle avatar bg-[#111820]">
         <div class="w-10 rounded-full">
-          <img src="<?php echo $_SESSION['usr_profilePic']; ?>" alt="<?php echo $_SESSION['usr_fullName']; ?>" />
+          <img src="<?php echo $_SESSION['usr_profilePic']; ?>" alt="<?php echo $_SESSION['usr_alias']; ?>" />
         </div>
       </label>
       <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 bg-[#111820]">
         <li>
-          <a class="justify-between"> Tu perfil </a>
+          <a class="justify-between" href="UsersController.php?action=profile&fAlias=<?php echo $_SESSION['usr_alias'] ?>" > Tu perfil </a>
         </li>
         <li><a href="UsersController.php?action=edit_profile">Gestionar Perfil</a></li>
         <li><a href="UsersController.php?action=logout">Cerrar Sesión</a></li>

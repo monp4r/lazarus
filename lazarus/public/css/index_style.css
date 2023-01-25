@@ -6,7 +6,6 @@
   height : calc(100vh - 66px);
   color: #f9f9f9;
   background-color: #111820;
-  background-image: url("../img/auth_assets/login_bg_2.svg");
   font-family: "Euclid Circular A", sans-serif;  
 }
 

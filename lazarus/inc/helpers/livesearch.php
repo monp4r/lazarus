@@ -17,14 +17,10 @@ if (isset($_POST['input'])) {
   $control = $buscar->fetchAll(PDO::FETCH_OBJ);
   $count = $buscar->rowCount();
 
-
-
   if ($count > 0) {
-
     foreach ($control as $list) {
-
       echo "<li>
-      <a href=\"http://example.com/" .$list->col_usr_alias . "\">
+      <a href=\"" . "./UsersController.php?action=profile&fAlias=" . $list->col_usr_alias . "\">
         <div class=\"text-sm font-normal \">
           <img class=\"h-10 w-10 rounded-full\" src=\"". $list->col_user_profilePic . "\" alt=\"\">
           <div class=\"ml-14 -mt-11\">

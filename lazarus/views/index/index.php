@@ -41,26 +41,21 @@
 
 
   <div class="content bg-[#111820]">
-
     <label for="my-modal-3" class="btn btn-primary">Enviar Mensaje</label>
     <input type="checkbox" id="my-modal-3" class="modal-toggle" />
     <div class="modal">
       <div class="modal-box relative">
-
-
         <form method="POST" id="messageForm" action="MessagesController.php" enctype="multipart/form-data" class="form">
           <input type="hidden" name="action" value="post_message">
-
           <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
           <h3 class="text-lg font-bold mb-10">Enviar Mensaje</h3>
           <textarea type="text" name="fTexto" id="fTexto" form="messageForm" rows="3" class="textarea textarea-primary w-full h-105" placeholder="Escriba su mensaje..." id="my-text"></textarea>
           <div class="preview">
             <p class="py-4" id="text-preview">Imagen</p>
             <img id="fImagen-preview" />
-
           </div>
-
           <div class="form-control w-full">
+            <br>
             <label class="label">
               <span class="label-text">Adjunte una imagen a su mensaje (opcional)</span>
               <span class="label-text-alt">GIF, JPG, JPEG, PNG</span>
@@ -68,40 +63,20 @@
             <input type="file" name="fImagen" id="fImagen" accept="image/*" onchange="mostrarVistaPreviaImagen(event);" class="file-input file-input-bordered file-input-info w-full" />
             <label class="label">
               <span class="label-text-alt error" id="image_error"></span>
-
             </label>
           </div>
           <div class="modal-action">
             <p style="margin-top:14px;margin-right:20px;" id="result"></p>
             <button class="btn btn-outline btn-info 
-            " type="submit" id="submit_message">ENVÍAR MENSAJE</button>
+            " type="submit" id="submit_message">ENVÍAR</button>
           </div>
-
-
-
-
-
-
-
-
-
         </form>
-
-
-
-
-
       </div>
     </div>
-  </div>
 
-  <script src="../public/js/message_validation.js"></script>
+    <br>
 
-
-
-
-
-  <form method="POST" id="followForm" action="FollowController.php" enctype="multipart/form-data" class="form">
+<form method="POST" id="followForm" action="FollowController.php" enctype="multipart/form-data" class="form">
     <input type="hidden" name="action" value="follow_user">
     <h1>SEGUIR A USUARIO MENSAJE</h1>
 
@@ -117,6 +92,23 @@
 
     <button type="submit">SEGUIR AL USUARIO INTRODUCIDO</button>
   </form>
+
+
+
+    
+
+    
+
+
+  </div>
+
+  <script src="../public/js/message_validation.js"></script>
+
+
+
+
+
+  
 
 </div>
 

@@ -11,22 +11,22 @@ class UsersController extends User
 
   public function Redirect()
   {
-    header("location: IndexController.php?action=index", 303);
+    header("location: IndexController.php?action=index", true, 303);
   }
 
   public function RedirectLogin()
   {
-    header("location: UsersController.php?action=login");
+    header("location: UsersController.php?action=login", true, 303);
   }
 
   public function RedirectSignup()
   {
-    header("location: UsersController.php?action=signup");
+    header("location: UsersController.php?action=signup", true, 303);
   }
 
   public function RedirectGestionarPerfil()
   {
-    header("location: UsersController.php?action=edit_profile");
+    header("location: UsersController.php?action=edit_profile", true, 303);
   }
 
   public function MostrarLogin()
@@ -42,6 +42,10 @@ class UsersController extends User
   public function MostrarGestionarPerfil()
   {
     include_once '../views/users/edit_profile.php';
+  }
+
+  public function MostrarPerfil($usuario){
+    include_once '../views/users/profile.php';
   }
 
   public function RegistrarUsuario($fullName, $alias, $email, $password, $profilePic)
@@ -194,12 +198,12 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
   $ic->CerrarSesion();
 }
 
-if (isset($_GET['action']) && $_GET['action'] == 'profile') {
-  $ic = new UsersController();
-  #$ic->MostrarPerfil();
+if (isset($_GET['action']) && $_GET['action'] == 'profile') {  
+    $ic = new UsersController();
+    $ic->MostrarPerfil($_GET['fAlias']);
 }
 
-if (isset($_GET['action']) && $_GET['action'] == 'edit_profile') {
+if (isset($_GET['action']) && $_GET['action'] == 'edit_profile' && isset($_SESSION['usr_id'])) {
   $ic = new UsersController();
   $ic->MostrarGestionarPerfil();
 }
@@ -227,7 +231,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
 
 if (isset($_POST['action']) && $_POST['action'] == 'edit_profile') {
   $ic = new UsersController();
-
   $ic->VerificarCambiosPerfil(
     comprobar_entrada($_POST['fNombre']),
     comprobar_entrada($_POST['fAlias']),

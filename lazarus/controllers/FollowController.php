@@ -11,7 +11,7 @@ class FollowController extends Follow
 
   public function RedirectIndex()
   {
-    header("location: IndexController.php?action=index", 303);
+    header("location: IndexController.php?action=index", true, 303);
   }
 
   public function VerificarSeguirUsuario($alias_usr_followed)
