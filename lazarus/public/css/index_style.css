@@ -3,12 +3,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0");
 
 .content{
-  height : calc(100vh - 67px);
+  height : calc(100vh - 66px);
   color: #f9f9f9;
   background-color: #111820;
   background-image: url("../img/auth_assets/login_bg_2.svg");
-  font-family: "Euclid Circular A", sans-serif;
-  
+  font-family: "Euclid Circular A", sans-serif;  
 }
 
+img  #fImagen-preview{
+  width: 100%;
+  display: none;
+  margin-bottom: 30px;
+}
+
+#text-preview {
+  display: none;
+}
+
+.error{
+  color: #cc0000 !important;
+}
 

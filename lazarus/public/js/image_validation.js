@@ -2,7 +2,7 @@ $(document).ready(function() {
   $("#fImagen, #fProfileAvatar").change(function() {
     var extension_archivo = $(this).val().split('.').pop().toLowerCase();
     
-    var extensiones_validas = ['jpeg', 'jpg', 'png', 'gif'];
+    var extensiones_validas = ['jpeg', 'jpg', 'png', 'gif', 'JPEG', 'JPG', 'PNG', 'GIF'];
     
     if ($.inArray(extension_archivo, extensiones_validas) == -1) {
       $('#image_error').text("Por favor, suba imágenes de tipo jpg, jpeg, png o gif.").show();
