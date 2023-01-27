@@ -88,7 +88,8 @@ if (isset($_SESSION['contexto_seguimiento'])) {
         </div>";
           }
         } else {
-          echo "<br><p> EL USUARIO NO EXISTE </p>";
+          #echo "<br>";
+          echo "<p> EL USUARIO NO EXISTE </p>";
         }
 
         ?>
