@@ -1,92 +1,143 @@
 <?php
 
+if (empty($_SESSION['usr_id'])) {
+  header("location: ./controllers/UsersController.php?action=login");
+} 
+
+define("TITULO_PAGINA", "$usuario / Lazarus");
+include_once '../inc/components/alertas.php';
 include_once '../inc/templates/main_templates/main_header.php';
-
 include_once '../inc/templates/main_templates/navbar.php';
-
-
 ?>
 
 <style>
-  @import url("https://fonts.cdnfonts.com/css/anurati");
-  @import url("https://fonts.cdnfonts.com/css/euclid-circular-a");
-  @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0");
-
-  .content {
-    height: calc(100vh - 66px);
-    color: #f9f9f9;
-    background-color: #111820;
-    font-family: "Euclid Circular A", sans-serif;
-  }
-
-  .card{
-    word-wrap: break-word;
+  @media (width <=768px) {
+    .content {
+      display: flex;
+      justify-content: center;
+    }
 
   }
 </style>
 
-<div class="content">
+<?php
+if (isset($_SESSION['contexto_seguimiento'])) {
+  echo $_SESSION['contexto_seguimiento'];
+  unset($_SESSION['contexto_seguimiento']);
+}
 
-  <?php
-  include_once '../config/Connection.php';
-  $ic = new Connection();
+?>
 
-  $sql = "SELECT col_usrPost_id,
-                   col_usrPost_user,
-                   TU.col_usr_alias AS usr_alias,
-                   TU.col_usr_fullName AS usr_fullName,
-                   TU.col_user_profilePic AS usr_profilePic,
-                   col_usrPost_text,
-                   col_usrPost_media,
-                   col_usrPost_createdAt
-              FROM tab_user_post TUP, tab_user TU
-             WHERE TU.col_usr_id = TUP.col_usrPost_user
-               AND TUP.col_usrPost_user = (SELECT col_usr_id
-                                             FROM tab_user
-                                            WHERE col_usr_alias = ?)
-          ORDER BY col_usrPost_createdAt DESC";
+<div class="content mt-10">
 
-  $buscar = $ic->db->prepare($sql);
+  <div class="md:flex md:justify-center  ">
 
-  echo "<p>" . $usuario . " </p>";
-  $buscar->bindParam(1, $usuario);
-  $buscar->execute();
-  $control = $buscar->fetchAll(PDO::FETCH_OBJ);
-  $count = $buscar->rowCount();
+    <div class="perfil md:w-80 max-w-sm">
+      <div class="rounded-box grid flex-shrink-0 place-items-center items-center gap-4 p-4 py-8 shadow-xl bg-info text-info-content">
 
-  echo "<br>";
+        <?php
 
-  if ($count > 0) {
+        if ($datosUsuario !== 'sin_datos') {
 
-    foreach ($control as $list) {
-
-      echo "<div class=\"card lg:card-side shadow-xl max-w-sm bg-info\">
-
-          <div class=\"card-body text-info-content\">
-            <div class=\"avatar\">
-    
-              <div class=\"w-10 rounded-full\">
-                <img src=\"" . $list->usr_profilePic . "\"/>
+          echo "
+        <div class=\"dropdown\">
+          <div tabindex=\"0\">
+            <div class=\"w-full\">
+              <img src=\"$datosUsuario->col_user_profilePic\" width=\"94\" height=\"94\" alt=\"$datosUsuario->col_usr_fullName\" class=\"mask mask-squircle\" />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class=\"dropdown w-full\">
+            <div tabindex=\"0\">
+              <div class=\"text-center\">
+                <div class=\"text-lg font-extrabold\">$datosUsuario->col_usr_alias</div>
+                <div class=\"text-lg font-lg\">$datosUsuario->col_usr_fullName</div>
+                <div class=\"text-info-content/90 font-bold my-3 text-sm\">
+                  SEGUIDORES:
+                  <br />
+                  SIGUIENDO:
+                </div>
               </div>
             </div>
-            <h2 class=\"card-title ml-12 -mt-[51px]\"> " . $list->usr_alias . "</h2>
-            <h6 class=\"ml-12 -mt-4\">" . $list->usr_fullName . "</h6>";
-      echo "<p class=\"break-all\" >" . $list->col_usrPost_text . " </p>";
-      if (isset($list->col_usrPost_media)) {
-        echo "<figure><img src=\"" . $list->col_usrPost_media . "\" alt=\"Shoes\" class=\"w-full\" /></figure>";
-      }
+          </div>
+        </div>";
 
-      echo "</div></div>";
-
-      echo "<br>";
-    }
-  } else {
-    echo "<li><div class=\"text-base font-semibold\">NO HAY RESULTADOS</div></li>";
-  }
-
-  ?>
+          if ($datosUsuario->col_usr_id == $_SESSION['usr_id']) {
+            echo "
+          <button class=\"btn\" onclick=\"location.href='./UsersController.php?action=edit_profile'\">Editar perfil</button>
+          
+          </div>
+          ";
+          } else {
 
 
-  <?php
-  include_once '../inc/templates/main_templates/main_footer.php';
-  ?>
+            echo "
+          <div>
+  
+            <form method=\"POST\" id=\"followForm\" action=\"FollowController.php\" enctype=\"multipart/form-data\" class=\"form\">
+              <input type=\"hidden\" name=\"action\" value=\"follow_user\">
+
+              <button class=\"btn\" ype=\"submit\" name=\"fUsuarioASeguir\" id=\"fUsuarioASeguir\" value=\"$usuario\" onclick=\"location.href='./UsersController.php?action=edit_profile'\">SEGUIR</button>
+      
+              
+             
+            </form>
+  
+          </div>
+        </div>";
+          }
+        } else {
+          echo "<br><p> EL USUARIO NO EXISTE </p>";
+        }
+
+        ?>
+
+      </div>
+
+      <br>
+
+      <div class="mensajes md:ml-10 ">
+
+        <?php
+
+
+        if ($contextoPerfil > 0) {
+
+          foreach ($contextoPerfil as $list) {
+
+            echo "<div class=\"card lg:card-side shadow-xl max-w-sm bg-info\">
+              <div class=\"card-body text-info-content \">
+              <div class=\"avatar\">
+                <div class=\"w-10 rounded-full\">
+                  <img src=\"" . $list->usr_profilePic . "\"/>
+                </div>
+              </div>
+              <h2 class=\"card-title ml-12 -mt-[51px]\"> " . $list->usr_alias . "</h2>
+              <h6 class=\"ml-12 -mt-4\">" . $list->usr_fullName . "</h6>";
+            echo "<p class=\"break-words\" >" . $list->col_usrPost_text . " </p>";
+
+            if (isset($list->col_usrPost_media)) {
+              echo "<figure class=\"rounded-xl\"><img src=\"" . $list->col_usrPost_media . "\" alt=\"Shoes\" class=\"w-full\" /></figure>";
+            }
+
+            echo "</div></div>";
+            echo "<br>";
+          }
+        } else {
+          echo "<br><p class=\"center\"> NO EXISTEN PUBLICACIONES </p>";
+        }
+
+        ?>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+    <?php
+    include_once '../inc/templates/main_templates/main_footer.php';
+    ?>

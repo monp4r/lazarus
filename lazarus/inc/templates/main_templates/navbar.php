@@ -34,7 +34,7 @@
     <div class="form-control bg-[#111820]">
       <div class="dropdown dropdown-bottom" >
         <label tabindex="0" class="m-1 mb-50 bg-[#111820]">
-          <input type="text" placeholder="Buscar Usuarios" class="input input-bordered live_search bg-[#111820]" style="position: relative;" name="live_search" autocomplete="off"
+          <input type="search" placeholder="Buscar Usuarios" class="input input-bordered live_search bg-[#111820]" style="position: relative;" name="live_search" autocomplete="off"
           style="background-color:#111820;"
           /></label>
         <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 bg-[#111820]">

@@ -14,6 +14,8 @@ if (empty($_SESSION['usr_id'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Importamos hojas de estilo y scripts -->
+
+    <link rel="stylesheet" href="../public/css/index_style.css">
     
       <!-- Importamos Daisy UI -->
       <link
@@ -33,6 +35,6 @@ if (empty($_SESSION['usr_id'])) {
       <link rel="icon" type="image/png" sizes="16x16" href="../public/img/favicons/favicon-16x16.png">
       <link rel="manifest" href="/site.webmanifest">
 
-    <title> Inicio / Lazarus</title>
+    <title> <?php echo TITULO_PAGINA;  ?></title>
   </head>
   <body class="bg-[#111820]">

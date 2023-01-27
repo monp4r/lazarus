@@ -41,7 +41,7 @@
 
   // Comprobar si ha habido algún error
   if ($uploadOK == 0) {
-    #echo "Lo siento, tu fichero no se ha subido. Se ha puesto la imagen por def.";
+    echo "Lo siento, tu fichero no se ha subido. Se ha puesto la imagen por def.";
     if(isset($_SESSION['usr_profilePic'])){
       $this->col_user_profilePic = $_SESSION['usr_profilePic'];
     } else {

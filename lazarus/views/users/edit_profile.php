@@ -1,18 +1,35 @@
 <?php
 
+if (empty($_SESSION['usr_id'])) {
+  header("location: ./controllers/UsersController.php?action=login");
+} 
+
+define("TITULO_PAGINA", "Editar Perfil / Lazarus");
 include_once '../inc/templates/main_templates/main_header.php';
-
 include_once '../inc/templates/main_templates/navbar.php';
-
-
+include_once '../inc/components/alertas.php';
 ?>
 
-<div>
+<div class="content">
 
   <?php if (isset($_SESSION['success'])) {
-    echo "<p>" . $_SESSION['success'] . "</p>";
+    alertSuccess($_SESSION['success']);
+    unset($_SESSION['success']);
+
   }
+
+  if (isset($_SESSION['error_password'])) {
+    alertError($_SESSION['error_password']);
+    unset($_SESSION['error_password']);
+  }
+  
+  if (isset($_SESSION['error_alias'])) {
+    alertError($_SESSION['error_alias']);
+    unset($_SESSION['error_alias']);
+  }
+
   ?>
+
 
 
 

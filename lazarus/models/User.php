@@ -130,6 +130,42 @@ class User{
     $ic->closeConnection();
   }
 
+  public function ObtenerMensajesUsuario($usuario)
+  {
+    include_once '../config/Connection.php';
+    $ic = new Connection();
+
+    $sql = "SELECT col_usrPost_id,
+                   col_usrPost_user,
+                   TU.col_usr_alias AS usr_alias,
+                   TU.col_usr_fullName AS usr_fullName,
+                   TU.col_user_profilePic AS usr_profilePic,
+                   col_usrPost_text,
+                   col_usrPost_media,
+                   col_usrPost_createdAt
+              FROM tab_user_post TUP, tab_user TU
+             WHERE TU.col_usr_id = TUP.col_usrPost_user
+               AND TUP.col_usrPost_user = (SELECT col_usr_id
+                                             FROM tab_user
+                                            WHERE col_usr_alias = ?)
+          ORDER BY col_usrPost_createdAt DESC";
+
+    $buscar = $ic->db->prepare($sql);
+    $buscar->bindParam(1, $usuario);
+    $buscar->execute();
+    $control = $buscar->fetchAll(PDO::FETCH_OBJ);
+    $count = $buscar->rowCount();
+
+    $ic->closeConnection();
+
+    if($count > 0) {
+      return $control;
+    } else {
+      return 0;
+    }
+
+  }
+
 }
 
 ?>

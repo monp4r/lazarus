@@ -9,14 +9,24 @@ include_once '../models/Index.php';
 class IndexController extends Index
 {
 
-  public function MostarIndex()
-  {
-    include_once '../views/index/index.php';
-  }
-
   public function RedirectIndex()
   {
     header("location: IndexController.php?action=index", true, 303);
+  }
+
+  public function RedirectLogin()
+  {
+    header("location: UsersController.php?action=login", true, 303);
+  }
+
+  public function MostarIndex()
+  {
+    if(empty($_SESSION['usr_id'])){
+      $this->RedirectLogin();
+    }else{
+      $mensajes = $this->ObtenerMensajesUsuario($_SESSION['usr_id']);
+      include_once '../views/index/index.php';
+    }
   }
 
 

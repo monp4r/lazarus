@@ -45,6 +45,9 @@ class UsersController extends User
   }
 
   public function MostrarPerfil($usuario){
+    
+    $datosUsuario = $this->ConsultarUsuarioPorAlias($usuario);
+    $contextoPerfil = $this->ObtenerMensajesUsuario($usuario);
     include_once '../views/users/profile.php';
   }
 
@@ -137,10 +140,13 @@ class UsersController extends User
 
     include_once '../inc/helpers/upload_helper.php';
 
-    $_SESSION['success'] = 'Perfil actualizado correctamente.';
+    if(!(isset($_SESSION['error_alias']) || isset($_SESSION['error_password'])))
+    {
+      $_SESSION['success'] = 'Perfil actualizado correctamente.';
+    }
     $_SESSION['usr_alias'] = $this->col_usr_alias;
     $_SESSION['usr_fullName'] = $this->col_usr_fullName;
-    $_SESSION['usr_profilePic'] = $this->col_user_profilePic;
+    #$_SESSION['usr_profilePic'] = $this->col_user_profilePic;
 
     $this->RedirectGestionarPerfil();
   }
@@ -162,9 +168,14 @@ class UsersController extends User
     }
 
 
-    if (!empty($newPassword)) {
+    if (isset($newPassword) && $newPassword !== '') {
       if (password_verify($password, $usuarioActual->col_usr_password)) {
-        $this->col_usr_password = password_hash($newPassword, PASSWORD_ARGON2ID);
+        if($newPassword != $password){
+          $this->col_usr_password = password_hash($newPassword, PASSWORD_ARGON2ID);
+        }else{
+          $_SESSION['error_password'] = 'La nueva contraseña no puede ser igual a la anterior.';
+          $this->RedirectGestionarPerfil();
+        }
       } else {
         $_SESSION['error_password'] = 'Contraseña incorrecta.';
         $this->RedirectGestionarPerfil();
@@ -172,11 +183,14 @@ class UsersController extends User
     } else {
       $this->col_usr_password = $usuarioActual->col_usr_password;
     }
-
-    $this->col_user_profilePic = $_SESSION['usr_profilePic'];
-
+  
+    
+    $this->col_user_profilePic = $usuarioActual->col_user_profilePic;
+    
     $this->GuardarCambiosPerfil($profilePic, $alias);
+    
   }
+  
 
 
 }
@@ -200,7 +214,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 
 if (isset($_GET['action']) && $_GET['action'] == 'profile') {  
     $ic = new UsersController();
-    $ic->MostrarPerfil($_GET['fAlias']);
+    $ic->MostrarPerfil(comprobar_entrada($_GET['fAlias']));
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'edit_profile' && isset($_SESSION['usr_id'])) {

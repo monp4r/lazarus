@@ -9,9 +9,8 @@ include_once '../models/Follow.php';
 class FollowController extends Follow
 {
 
-  public function RedirectIndex()
-  {
-    header("location: IndexController.php?action=index", true, 303);
+  public function RedirectUser($usuario){
+    header("location: UsersController.php?action=profile&fAlias={$usuario}", true, 303);
   }
 
   public function VerificarSeguirUsuario($alias_usr_followed)
@@ -19,7 +18,7 @@ class FollowController extends Follow
     $this->col_followUser_follower = $_SESSION['usr_id'];
     $this->col_followUser_followed = $alias_usr_followed;
     $_SESSION['contexto_seguimiento'] = $this->SeguirUsuario($alias_usr_followed);
-    $this->RedirectIndex();
+    $this->RedirectUser($alias_usr_followed);
   }
 }
 
