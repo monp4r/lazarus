@@ -1,13 +1,11 @@
 <?php
 
-if (empty($_SESSION['usr_id'])) {
-  header("location: ./controllers/UsersController.php?action=login");
-} 
+
 
 define("TITULO_PAGINA", "Editar Perfil / Lazarus");
 include_once '../inc/templates/main_templates/main_header.php';
 include_once '../inc/templates/main_templates/navbar.php';
-include_once '../inc/components/alertas.php';
+include_once '../inc/components/alerts.php';
 ?>
 
 <div class="content">

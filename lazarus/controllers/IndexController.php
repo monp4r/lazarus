@@ -24,7 +24,7 @@ class IndexController extends Index
     if(empty($_SESSION['usr_id'])){
       $this->RedirectLogin();
     }else{
-      $mensajes = $this->ObtenerMensajesUsuario($_SESSION['usr_id']);
+      $mensajesUsuario = $this->ObtenerMensajesUsuario($_SESSION['usr_id']);
       include_once '../views/index/index.php';
     }
   }

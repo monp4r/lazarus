@@ -43,12 +43,12 @@
       </div>
     </div>
     <div class="dropdown dropdown-end ">
-      <label tabindex="0" class="btn btn-ghost btn-circle avatar bg-[#111820]">
-        <div class="w-10 rounded-full">
+      <label tabindex="0" class="btn btn-ghost btn-circle avatar bg-[#111820] ">
+        <div class="w-10 rounded-full ">
           <img src="<?php echo $_SESSION['usr_profilePic']; ?>" alt="<?php echo $_SESSION['usr_alias']; ?>" />
         </div>
       </label>
-      <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 bg-[#111820]">
+      <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 bg-[#111820] ">
         <li>
           <a class="justify-between" href="UsersController.php?action=profile&fAlias=<?php echo $_SESSION['usr_alias'] ?>" > Tu perfil </a>
         </li>

@@ -47,7 +47,7 @@ class UsersController extends User
   public function MostrarPerfil($usuario){
     
     $datosUsuario = $this->ConsultarUsuarioPorAlias($usuario);
-    $contextoPerfil = $this->ObtenerMensajesUsuario($usuario);
+    $mensajesUsuario = $this->ObtenerMensajesUsuario($usuario);
     include_once '../views/users/profile.php';
   }
 

@@ -15,6 +15,7 @@ class Index
                    TUP.col_usrPost_text      AS usrPost_text,
                    TUP.col_usrPost_media     AS usrPost_media,
                    TUP.col_usrPost_createdAt AS usrPost_createdAt
+                   
               FROM tab_followUser TFU
         INNER JOIN tab_user TU               ON (TFU.col_followUser_followed = TU.col_usr_id)
         INNER JOIN tab_user_post TUP         ON TFU.col_followUser_followed = TUP.col_usrPost_user
@@ -28,6 +29,7 @@ class Index
                    TUP.col_usrPost_text      AS usrPost_text,
                    TUP.col_usrPost_media     AS usrPost_media,
                    TUP.col_usrPost_createdAt AS usrPost_createdAt
+
               FROM tab_user_post TUP
         INNER JOIN tab_user TU               ON TU.col_usr_id = TUP.col_usrPost_user 
              WHERE TUP.col_usrPost_user = ?

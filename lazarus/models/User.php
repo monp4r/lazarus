@@ -140,9 +140,9 @@ class User{
                    TU.col_usr_alias AS usr_alias,
                    TU.col_usr_fullName AS usr_fullName,
                    TU.col_user_profilePic AS usr_profilePic,
-                   col_usrPost_text,
-                   col_usrPost_media,
-                   col_usrPost_createdAt
+                   col_usrPost_text AS usrPost_text,
+                   col_usrPost_media AS usrPost_media,
+                   col_usrPost_createdAt AS usrPost_createdAt
               FROM tab_user_post TUP, tab_user TU
              WHERE TU.col_usr_id = TUP.col_usrPost_user
                AND TUP.col_usrPost_user = (SELECT col_usr_id
@@ -165,6 +165,50 @@ class User{
     }
 
   }
+
+  public function ObtenerSeguidoresUsuario($alias){
+    include_once '../config/Connection.php';
+    $ic = new Connection();
+
+    $sql = "SELECT *
+              FROM tab_followUser
+             WHERE col_followUser_followed =
+           (SELECT col_usr_id
+              FROM tab_user
+             WHERE col_usr_alias = ?)";
+
+    $obtener = $ic->db->prepare($sql);
+    $obtener->bindParam(1, $alias);
+    $obtener->execute();
+    $count = $obtener->rowCount();
+
+    $ic->closeConnection();
+    return $count;
+
+  }
+
+  public function ObtenerSeguidosUsuario($alias){
+    include_once '../config/Connection.php';
+    $ic = new Connection();
+
+    $sql = "SELECT *
+              FROM tab_followUser
+             WHERE col_followUser_follower =
+           (SELECT col_usr_id
+              FROM tab_user
+             WHERE col_usr_alias = ?)";
+
+    $obtener = $ic->db->prepare($sql);
+    $obtener->bindParam(1, $alias);
+    $obtener->execute();
+    $count = $obtener->rowCount();
+
+    $ic->closeConnection();
+    return $count;
+
+  }
+
+
 
 }
 

@@ -9,24 +9,24 @@ function mostrarVistaPreviaImagen(event) {
   }
 }
 
-var myText = document.getElementById("fTexto");
-var result = document.getElementById("result");
-var limiteCaracteres = 150;
-result.textContent = 0 + "/" + limiteCaracteres;
+$(document).ready(function () {
+  var myText = document.getElementById("fTexto");
+  var result = document.getElementById("result");
+  var limiteCaracteres = 150;
+  result.textContent = 0 + "/" + limiteCaracteres;
 
-myText.addEventListener("input", function() {
-  
-  var longitudMensaje = myText.value.length;
-  result.textContent = longitudMensaje + "/" + limiteCaracteres;
+  myText.addEventListener("input", function () {
+    var longitudMensaje = myText.value.length;
+    result.textContent = longitudMensaje + "/" + limiteCaracteres;
 
-  if (longitudMensaje > limiteCaracteres) {
-    document.getElementById("submit_message").disabled = true;
-    result.style.borderColor = "#cc0000";
-    result.style.color = "#cc0000";
-  }else{
-    document.getElementById("submit_message").disabled = false;
-    result.style.borderColor = "white";
-    result.style.color = "white";
-  }
-
+    if (longitudMensaje > limiteCaracteres) {
+      document.getElementById("submit_message").disabled = true;
+      result.style.borderColor = "#cc0000";
+      result.style.color = "#cc0000";
+    } else {
+      document.getElementById("submit_message").disabled = false;
+      result.style.borderColor = "white";
+      result.style.color = "white";
+    }
+  });
 });

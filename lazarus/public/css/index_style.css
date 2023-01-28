@@ -1,6 +1,7 @@
-@import url("https://fonts.cdnfonts.com/css/anurati");
 @import url("https://fonts.cdnfonts.com/css/euclid-circular-a");
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0");
+
+@import url("./profile_style.css");
 
 html, body{
   margin:0px;  

@@ -1,0 +1,7 @@
+@media (width <=768px) {
+  .content {
+    display: flex;
+    justify-content: center;
+  }
+
+}
