@@ -2,7 +2,7 @@
 
 
 
-function mostrarPerfil($profilePic, $alias, $fullName, $following){
+function mostrarPerfil($profilePic, $alias, $fullName){
 
   include_once '../models/User.php';
   $im = new User();
@@ -26,7 +26,7 @@ function mostrarPerfil($profilePic, $alias, $fullName, $following){
                         </div>
                         <div class=\"text-info-content/90 font-bold my-3 text-sm\">
                           SEGUIDORES: ". $im->ObtenerSeguidoresUsuario($alias) ."
-                          <br/>
+                          <br>
                           SIGUIENDO: ". $im->ObtenerSeguidosUsuario($alias) ."
                         </div>
                       </div>

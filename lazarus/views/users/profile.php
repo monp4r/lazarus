@@ -29,8 +29,7 @@ if (isset($_SESSION['contexto_seguimiento'])) {
 
           mostrarPerfil($datosUsuario->col_user_profilePic,
                         $datosUsuario->col_usr_alias,
-                        $datosUsuario->col_usr_fullName,
-                        0, 0);
+                        $datosUsuario->col_usr_fullName);
 
           if ($datosUsuario->col_usr_id == $_SESSION['usr_id']) {
             echo "<button class=\"btn\" onclick=\"location.href='./UsersController.php?action=edit_profile'\">

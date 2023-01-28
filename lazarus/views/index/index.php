@@ -47,8 +47,7 @@ if (isset($_SESSION['msg_success'])) {
 
         mostrarPerfil($_SESSION['usr_profilePic'],
                       $_SESSION['usr_alias'],
-                      $_SESSION['usr_fullName'],
-                      0, 0);
+                      $_SESSION['usr_fullName']);
 
         echo "<button class=\"btn\" onclick=\"location.href='./UsersController.php?action=edit_profile'\">
                 Editar perfil
