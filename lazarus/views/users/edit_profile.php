@@ -8,6 +8,8 @@ include_once '../inc/templates/main_templates/navbar.php';
 include_once '../inc/components/alerts.php';
 ?>
 
+<link rel="stylesheet" href="../public/css/edit_profile_style.css">
+
 <div class="content">
 
   <?php if (isset($_SESSION['success'])) {
@@ -28,10 +30,12 @@ include_once '../inc/components/alerts.php';
 
   ?>
 
+  <div class="edit_profile">
+    
+  <h2>Edita tu perfil</h2>
+  <h3>Es muy fácil y sencillo</h3>
 
-
-
-  <form method="POST" id="loginForm" action="UsersController.php" enctype="multipart/form-data" class="login-form">
+  <form method="POST" id="edit_profile" action="UsersController.php" enctype="multipart/form-data" class="edit_profile">
 
     <input type="hidden" name="action" value="edit_profile">
 
@@ -79,27 +83,17 @@ include_once '../inc/components/alerts.php';
     <div class="column">
       <div class="input-box">
         <label>Foto de perfil (opcional)</label>
-        <input type="file" name="fProfileAvatar" id="fProfileAvatar" hidden="hidden" accept="image/*" />
-        <button type="button" id="custom-button">
-          SUBA SU FOTO DE PERFIL
-        </button>
+        <input type="file" name="fProfileAvatar" id="fProfileAvatar" accept="image/*" />
       </div>
     </div>
-    <button type="submit">ÚNETE A LAZARUS</button>
-
+    <button type="submit">ACTUALIZAR PERFIL</button>
   </form>
+    
+  </div>
 
 </div>
 
 <script type="text/javascript">
-
-  const realFileBtn = document.getElementById("fProfileAvatar");
-  const customBtn = document.getElementById("custom-button");
-  const customTxt = document.getElementById("custom-text");
-
-  customBtn.addEventListener("click", function () {
-    realFileBtn.click();
-  });
 
   $(document).ready(function () {
     $('#signupForm').validate({

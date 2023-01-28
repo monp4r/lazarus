@@ -135,18 +135,15 @@ class UsersController extends User
 
   public function GuardarCambiosPerfil($profilePic, $alias)
   {
-
+    include_once '../inc/helpers/upload_helper_actualizar.php';
     $this->ActualizarUsuario();
 
-    include_once '../inc/helpers/upload_helper.php';
-
-    if(!(isset($_SESSION['error_alias']) || isset($_SESSION['error_password'])))
-    {
+    if(!(isset($_SESSION['error_alias']) || isset($_SESSION['error_password']))){
       $_SESSION['success'] = 'Perfil actualizado correctamente.';
     }
+
     $_SESSION['usr_alias'] = $this->col_usr_alias;
     $_SESSION['usr_fullName'] = $this->col_usr_fullName;
-    #$_SESSION['usr_profilePic'] = $this->col_user_profilePic;
 
     $this->RedirectGestionarPerfil();
   }
@@ -185,7 +182,7 @@ class UsersController extends User
     }
   
     
-    $this->col_user_profilePic = $usuarioActual->col_user_profilePic;
+    #$this->col_user_profilePic = $usuarioActual->col_user_profilePic;
     
     $this->GuardarCambiosPerfil($profilePic, $alias);
     
