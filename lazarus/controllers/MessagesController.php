@@ -29,7 +29,6 @@ class MessagesController extends Message
       }
     }
     
-    // REDIRIGIR A INDEX O PARTE DE MENSAJES??
     if (!(isset($_SESSION['img_msg_error']) || isset($_SESSION['text_msg_error']))) {
       $this->guardarMensaje();
       $_SESSION['msg_success'] = 'Mensaje subido correctamente.';
@@ -37,7 +36,10 @@ class MessagesController extends Message
     
     $this->redirectIndex();
   }
-}
+  
+} // Fin de la clase
+
+// Tratamiento de peticiones HTTP POST
 
 if (isset($_POST['action']) && $_POST['action'] == 'post_message') {
   $ic = new MessagesController();
@@ -46,3 +48,5 @@ if (isset($_POST['action']) && $_POST['action'] == 'post_message') {
     $_FILES['fImagen']
   );
 }
+
+?>

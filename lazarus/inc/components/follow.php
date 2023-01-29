@@ -1,6 +1,5 @@
 <?php
 
-
 function comprobarSeguimiento($seguidor, $seguido){
   include_once '../models/Follow.php';
   $im = new Follow();

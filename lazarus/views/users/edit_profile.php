@@ -6,6 +6,7 @@ include_once '../inc/templates/main_templates/navbar.php';
 include_once '../inc/components/alerts.php';
 
 ?>
+
 <!-- Importamos hojas de estilo y scripts -->
 <link rel="stylesheet" href="../public/css/index_style.css">
 <link rel="stylesheet" href="../public/css/edit_profile_style.css">
@@ -138,7 +139,7 @@ include_once '../inc/components/alerts.php';
 
 
   </div>
-  
+
 
   <?php
   include_once '../inc/templates/main_templates/main_footer.php';

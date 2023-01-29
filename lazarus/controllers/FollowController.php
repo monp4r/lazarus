@@ -38,12 +38,9 @@ class FollowController extends Follow
     include_once '../views/follow/people.php';
   }
 
-}
+} // Fin de la clase
 
-if (isset($_POST['action']) && $_POST['action'] == 'follow_user') {
-  $ic = new FollowController();
-  $ic->verificarSeguirUsuario(comprobar_entrada($_POST['fUsuarioASeguir']));
-}
+// Tratamiento de peticiones HTTP GET
 
 if (isset($_GET['action']) && $_GET['action'] == 'following') {
   $ic = new FollowController();
@@ -61,6 +58,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'people') {
   }else{
     $ic->redirectIndex();
   }
+}
+
+// Tratamiento de peticiones HTTP POST
+
+if (isset($_POST['action']) && $_POST['action'] == 'follow_user') {
+  $ic = new FollowController();
+  $ic->verificarSeguirUsuario(comprobar_entrada($_POST['fUsuarioASeguir']));
 }
 
 

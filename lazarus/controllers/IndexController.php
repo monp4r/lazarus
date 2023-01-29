@@ -30,7 +30,9 @@ class IndexController extends Index
   }
 
 
-}
+} // Fin de la clase
+
+// Tratamiento de peticiones HTTP GET
 
 if(isset($_GET['action']) && $_GET['action'] == 'index'){
   $index = new IndexController();

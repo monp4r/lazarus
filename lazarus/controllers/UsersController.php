@@ -184,7 +184,7 @@ class UsersController extends User
     
   }
 
-}
+} // Fin de la clase
 
 // Tratamiento de HTTP GET
 
@@ -244,5 +244,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'edit_profile') {
     $_FILES['fProfileAvatar']
   );
 }
+
+?>
 
 

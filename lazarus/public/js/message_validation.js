@@ -1,22 +1,22 @@
 function mostrarVistaPreviaImagen(event) {
   if (event.target.files.length > 0) {
-    var src = URL.createObjectURL(event.target.files[0]);
+    var fuente = URL.createObjectURL(event.target.files[0]);
     var preview = document.getElementById("fImagen-preview");
     var previewString = document.getElementById("text-preview");
-    preview.src = src;
+    preview.fuente = fuente;
     preview.style.display = "block";
     previewString.style.display = "block";
   }
 }
 
 $(document).ready(function () {
-  var myText = document.getElementById("fTexto");
+  var texto = document.getElementById("fTexto");
   var result = document.getElementById("result");
   var limiteCaracteres = 150;
   result.textContent = 0 + "/" + limiteCaracteres;
 
-  myText.addEventListener("input", function () {
-    var longitudMensaje = myText.value.length;
+  texto.addEventListener("input", function () {
+    var longitudMensaje = texto.value.length;
     result.textContent = longitudMensaje + "/" + limiteCaracteres;
 
     if (longitudMensaje > limiteCaracteres) {

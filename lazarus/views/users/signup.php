@@ -4,37 +4,31 @@
 if (!empty($_SESSION['usr_id'])) {
   header("location: ../controllers/IndexController.php?action=index");
 }
-  include_once '../inc/templates/auth_templates/signup_header.php';
+include_once '../inc/templates/auth_templates/signup_header.php';
 
 ?>
 
 <div class="signup">
-  
+
   <h2>Regístrate en LAZARUS</h2>
   <h3>Es muy fácil y sencillo</h3>
-    
+
   <form method="POST" id="signupForm" action="UsersController.php" enctype="multipart/form-data" class="form">
     <input type="hidden" name="action" value="signup">
     <div class="column">
       <div class="input-box">
         <label>Nombre Completo</label>
-        <input type="text" name="fNombre" id="fNombre" placeholder="Introduzca su nombre completo" required
-        value="<?php echo isset($_SESSION['reg_prov_fullName']) ? $_SESSION['reg_prov_fullName'] : '' ?>"
-        />
+        <input type="text" name="fNombre" id="fNombre" placeholder="Introduzca su nombre completo" required value="<?php echo isset($_SESSION['reg_prov_fullName']) ? $_SESSION['reg_prov_fullName'] : '' ?>" />
         <span class="material-symbols-outlined"> person </span>
       </div>
       <div class="input-box">
         <label>Alias</label>
-        <input type="text" name="fAlias" id="fAlias" placeholder="Introduzca un alias (único)" required
-        value="<?php echo isset($_SESSION['reg_prov_alias']) ? $_SESSION['reg_prov_alias'] : '' ?>"
-        
-        />
+        <input type="text" name="fAlias" id="fAlias" placeholder="Introduzca un alias (único)" required value="<?php echo isset($_SESSION['reg_prov_alias']) ? $_SESSION['reg_prov_alias'] : '' ?>" />
         <?php
-          if (isset($_SESSION['error_alias'])) {
-            echo "<label id=\"fAlias-error\" class=\"error\" for=\"fAlias\">" . $_SESSION['error_alias'] . "</label>";
-            unset($_SESSION['error_alias']);
-
-          }
+        if (isset($_SESSION['error_alias'])) {
+          echo "<label id=\"fAlias-error\" class=\"error\" for=\"fAlias\">" . $_SESSION['error_alias'] . "</label>";
+          unset($_SESSION['error_alias']);
+        }
         ?>
         <span class="material-symbols-outlined">
           account_circle
@@ -43,15 +37,12 @@ if (!empty($_SESSION['usr_id'])) {
     </div>
     <div class="input-box">
       <label>Correo electrónico</label>
-      <input type="email" name="fEmail" id="fEmail"
-        placeholder="Introduzca su correo eléctronico (único para cada cuenta)" required
-        value="<?php echo isset($_SESSION['reg_prov_email']) ? $_SESSION['reg_prov_email'] : '' ?>"
-        />
+      <input type="email" name="fEmail" id="fEmail" placeholder="Introduzca su correo eléctronico (único para cada cuenta)" required value="<?php echo isset($_SESSION['reg_prov_email']) ? $_SESSION['reg_prov_email'] : '' ?>" />
       <?php
-        if (isset($_SESSION['error_email'])) {
-          echo "<label id=\"fEmail-error\" class=\"error\" for=\"fEmail\" style=\"margin-bottom: 10px !important;\">" . $_SESSION['error_email'] . "</label>";
-          unset($_SESSION['error_email']);
-        }
+      if (isset($_SESSION['error_email'])) {
+        echo "<label id=\"fEmail-error\" class=\"error\" for=\"fEmail\" style=\"margin-bottom: 10px !important;\">" . $_SESSION['error_email'] . "</label>";
+        unset($_SESSION['error_email']);
+      }
       ?>
       <span class="material-symbols-outlined"> email </span>
     </div>
@@ -70,7 +61,7 @@ if (!empty($_SESSION['usr_id'])) {
     <div class="column">
       <div class="input-box">
         <label>Foto de perfil (opcional)</label>
-        <input type="file" name="fProfileAvatar" id="fProfileAvatar" hidden="hidden" accept="image/*"/>
+        <input type="file" name="fProfileAvatar" id="fProfileAvatar" hidden="hidden" accept="image/*" />
         <button type="button" id="custom-button">
           SUBA SU FOTO DE PERFIL
         </button>
@@ -83,16 +74,15 @@ if (!empty($_SESSION['usr_id'])) {
 </div>
 
 <script type="text/javascript">
-  
   const realFileBtn = document.getElementById("fProfileAvatar");
   const customBtn = document.getElementById("custom-button");
   const customTxt = document.getElementById("custom-text");
 
-  customBtn.addEventListener("click", function () {
+  customBtn.addEventListener("click", function() {
     realFileBtn.click();
   });
 
-  $(document).ready(function () {
+  $(document).ready(function() {
     $('#signupForm').validate({
       errorClass: "error",
       rules: {
@@ -163,7 +153,6 @@ if (!empty($_SESSION['usr_id'])) {
       }
     });
   });
-
 </script>
 
 <?php include_once '../inc/templates/auth_templates/signup_footer.php'; ?>

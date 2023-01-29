@@ -38,3 +38,5 @@ if (isset($_POST['input'])) {
     echo "<li><div class=\"text-base font-semibold\">NO HAY RESULTADOS</div></li>";
   }
 }
+
+?>

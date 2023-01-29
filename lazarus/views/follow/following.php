@@ -14,9 +14,9 @@ include_once '../inc/templates/main_templates/navbar.php';
 <br>
 
 <?php
-if (count($listadoUsuarios) == 0) {
-  echo "<h1>No sigues a nadie, puedes buscar a alguien en la página de Comunidad.</h1>";
-}
+  if (count($listadoUsuarios) == 0) {
+    echo "<h1>No sigues a nadie, puedes buscar a alguien en la página de Comunidad.</h1>";
+  }
 ?>
 
 <div class="content grid place-items-center lg:grid-cols-3">
@@ -44,8 +44,6 @@ if (count($listadoUsuarios) == 0) {
 
     echo "<br>";
   }
-
-
 
   ?>
 

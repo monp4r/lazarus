@@ -23,6 +23,6 @@ class Connection
         $this->db = null;
     }
 
-}
+} // Fin de la clase
 
 ?>

@@ -8,6 +8,7 @@ include_once '../inc/templates/main_templates/main_header.php';
 include_once '../inc/templates/main_templates/navbar.php';
 
 ?>
+
 <!-- Importamos hojas de estilo y scripts -->
 <link rel="stylesheet" href="../public/css/profile_style.css">
 <link rel="stylesheet" href="../public/css/index_style.css">
@@ -38,16 +39,18 @@ if (isset($_SESSION['msg_success'])) {
 
   <?php enviarMensaje(); ?>
 
-    <div class=" md:flex md:justify-center  ">
+  <div class=" md:flex md:justify-center  ">
 
     <div class="perfil md:w-80 max-w-sm">
       <div class="rounded-box grid flex-shrink-0 place-items-center items-center gap-4 p-4 py-8 shadow-xl bg-info text-info-content">
 
         <?php
 
-        mostrarPerfil($_SESSION['usr_profilePic'],
-                      $_SESSION['usr_alias'],
-                      $_SESSION['usr_fullName']);
+        mostrarPerfil(
+          $_SESSION['usr_profilePic'],
+          $_SESSION['usr_alias'],
+          $_SESSION['usr_fullName']
+        );
 
         echo "<button class=\"btn\" onclick=\"location.href='./UsersController.php?action=edit_profile'\">
                 Editar perfil
