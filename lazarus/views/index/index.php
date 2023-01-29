@@ -33,13 +33,13 @@ if (isset($_SESSION['msg_success'])) {
 ?>
 
 
-<div class="content mt-10">
+<div class="content mt-10 grid place-items-center">
 
   <?php enviarMensaje(); ?>
 
   <br>
 
-  <div class="md:flex md:justify-center  ">
+  <div class=" md:flex md:justify-center  ">
 
     <div class="perfil md:w-80 max-w-sm">
       <div class="rounded-box grid flex-shrink-0 place-items-center items-center gap-4 p-4 py-8 shadow-xl bg-info text-info-content">
