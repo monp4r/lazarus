@@ -9,13 +9,16 @@ include_once '../inc/components/alerts.php';
 <!-- Importamos hojas de estilo y scripts -->
 <link rel="stylesheet" href="../public/css/index_style.css">
 <link rel="stylesheet" href="../public/css/edit_profile_style.css">
+<script src="../public/js/edit_profile_validation.js"></script>
+<script src="../public/js/image_validation.js"></script>
+
 <div class="content">
-
-
 
   <div class="edit_profile">
 
     <h2>Edita tu perfil</h2>
+
+    <br>
 
     <?php if (isset($_SESSION['success'])) {
       alertsuccess($_SESSION['success']);
@@ -123,7 +126,7 @@ include_once '../inc/components/alerts.php';
           <span class="label-text bg-[#111820]">Imagen de perfil (opcional)</span>
           <span class="label-text-alt">GIF, JPG, JPEG, PNG</span>
         </label>
-        <input type="file" name="fProfileAvatar" id="fProfileAvatar" accept="image/*" onchange="mostrarVistaPreviaImagen(event);" class="file-input file-input-bordered file-input-info w-full bg-[#111820]" />
+        <input type="file" name="fProfileAvatar" id="fProfileAvatar" accept="image/*" class="file-input file-input-bordered file-input-info w-full bg-[#111820]" />
         <label class="label bg-[#111820]">
           <span class="label-text-alt error" id="image_error"></span>
         </label>
@@ -135,98 +138,7 @@ include_once '../inc/components/alerts.php';
 
 
   </div>
-  <script src="../public/js/image_validation.js"></script>
-  <script type="text/javascript">
-    
-
-    $(document).ready(function() {
-
-      
-      
-
-      $('#edit_profile').validate({
-        errorClass: "error",
-        rules: {
-          fNombre: {
-            required: true,
-            minlength: 3,
-            maxlength: 50
-          },
-          fEmail: {
-            required: true,
-            email: true,
-            minlength: 3,
-            maxlength: 50
-          },
-          fPassword: {
-            required: true,
-            minlength: 8,
-            maxlength: 50
-          },
-          fNewPassword: {
-            required: true,
-            minlength: 8,
-            maxlength: 50,
-
-          },
-          fCheckNewPassword: {
-            required: true,
-            minlength: 8,
-            maxlength: 50,
-            equalTo: "#fNewPassword"
-          },
-          fAlias: {
-            required: true,
-            minlength: 3,
-            maxlength: 50
-          },
-          fProfileAvatar: {
-            required: false,
-            extension: "jpg|jpeg|png|gif"
-          }
-        },
-        messages: {
-          fNombre: {
-            required: "Por favor, introduzca su nombre completo",
-            minlength: "El nombre debe tener al menos 3 caracteres",
-            maxlength: "El nombre no puede tener más de 50 caracteres"
-          },
-          fEmail: {
-            required: "Por favor, introduzca su correo electrónico",
-            email: "Por favor, introduzca un correo electrónico válido",
-            minlength: "El correo electrónico debe tener al menos 3 caracteres",
-            maxlength: "El correo electrónico no puede tener más de 50 caracteres"
-          },
-          fPassword: {
-            required: "Por favor, introduzca una contraseña",
-            minlength: "La contraseña debe tener al menos 8 caracteres",
-            maxlength: "La contraseña no puede tener más de 50 caracteres"
-          },
-          fNewPassword: {
-            required: "Por favor, introduzca una contraseña",
-            minlength: "La contraseña debe tener al menos 8 caracteres",
-            maxlength: "La contraseña no puede tener más de 50 caracteres"
-          },
-          fCheckNewPassword: {
-            required: "Por favor, confirme la contraseña",
-            minlength: "La contraseña debe tener al menos 8 caracteres",
-            maxlength: "La contraseña no puede tener más de 50 caracteres",
-            equalTo: "Las contraseñas no coinciden"
-          },
-          fAlias: {
-            required: "Por favor, introduzca un alias",
-            minlength: "El alias debe tener al menos 3 caracteres",
-            maxlength: "El alias no puede tener más de 50 caracteres"
-          },
-          fProfileAvatar: {
-            required: "Por favor, suba una foto de perfil",
-            extension: "Por favor, suba una foto de perfil válida"
-          }
-        }
-      });
-    });
-  </script>
-
+  
 
   <?php
   include_once '../inc/templates/main_templates/main_footer.php';
