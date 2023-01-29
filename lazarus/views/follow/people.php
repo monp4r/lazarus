@@ -13,7 +13,7 @@ include_once '../inc/templates/main_templates/navbar.php';
 
 <br>
 
-<div class="content grid place-items-center md:grid-cols-3">
+<div class="content grid place-items-center lg:grid-cols-3">
   
   <?php
 
