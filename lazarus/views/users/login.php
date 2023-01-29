@@ -67,6 +67,7 @@ include_once '../inc/templates/auth_templates/login_header.php';
 </div>
 
 <script type="text/javascript">
+  
   if ($(window).width() < 450) {
     $('#fAlias_fEmail').attr('placeholder', 'Alias / Correo electrónico');
     $('#fPassword').attr('placeholder', 'Contraseña');
