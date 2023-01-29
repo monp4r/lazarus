@@ -1,5 +1,10 @@
 <?php 
 
+/**
+ * Clase User
+ * 
+ * Clase que controla las caracterísitcas fundamentales de los usuarios
+ */
 class User{
 
   protected $col_usr_id;

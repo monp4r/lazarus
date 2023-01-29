@@ -1,10 +1,17 @@
 <?php
 
+/**
+ * Clase Connection
+ * 
+ * Clase que controla la conexión a la base de datos
+ */
 class Connection
 {
     public $db;
 
-    // Creamos el constructor para iniciar la conexión a la base de datos
+    /**
+     * Creamos el constructor para iniciar la conexión a la base de datos
+     */
     public function __construct()
     {
         try{
@@ -17,12 +24,13 @@ class Connection
         }
     }
     
-
+    /**
+     * Creamos el método para cerrar la conexión a la base de datos
+     * @return void
+     */
     public function closeConnection()
     {
         $this->db = null;
     }
 
 } // Fin de la clase
-
-?>

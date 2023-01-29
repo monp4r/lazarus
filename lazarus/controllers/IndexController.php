@@ -6,6 +6,11 @@ include_once '../inc/helpers/input_helper.php';
 
 include_once '../models/Index.php';
 
+/**
+ * Clase IndexController
+ * 
+ * Clase que controla las acciones del inicio de la aplicación
+ */
 class IndexController extends Index
 {
 

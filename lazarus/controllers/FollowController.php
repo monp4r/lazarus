@@ -6,6 +6,11 @@ include_once '../inc/helpers/input_helper.php';
 
 include_once '../models/Follow.php';
 
+/**
+ * Clase FollowController
+ * 
+ * Clase que controla las acciones del seguimiento de usuarios
+ */
 class FollowController extends Follow
 {
 
@@ -17,6 +22,14 @@ class FollowController extends Follow
     header("location: IndexController.php?action=index", true, 303);
   }
 
+  /**
+   * Función verificarSeguirUsuario
+   * 
+   * Función que verifica que el usuario a seguir cumple los requisitos y si es así lo sigue
+   * 
+   * @param mixed $alias_usr_followed
+   * @return void
+   */
   public function verificarSeguirUsuario($alias_usr_followed)
   {
     $this->col_followUser_follower = $_SESSION['usr_id'];
@@ -25,6 +38,14 @@ class FollowController extends Follow
     $this->redirectUser($alias_usr_followed);
   }
 
+  /**
+   * Función mostrarUsuariosSeguidos
+   * 
+   * Función que muestra los usuarios seguidos por el usuario que se pasa como parámetro.
+   * 
+   * @param mixed $idUsuario
+   * @return void
+   */
   public function mostrarUsuariosSeguidos($idUsuario)
   {
     $this->col_followUser_follower = $idUsuario;

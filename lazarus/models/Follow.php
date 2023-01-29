@@ -2,6 +2,9 @@
 
 include_once '../models/User.php';
 
+/**
+ * Modelo de datos del seguimiento de usuarios
+ */
 class Follow extends User
 {
 

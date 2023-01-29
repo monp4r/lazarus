@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Clase Message
+ * 
+ * Clase que controla los mensajes de los usuarios
+ */
 class Message
 {
 

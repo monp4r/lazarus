@@ -5,7 +5,11 @@ session_start();
 include_once '../inc/helpers/input_helper.php';
 include_once '../models/Message.php';
 
-
+/**
+ * Clase MessagesController
+ * 
+ * Clase que controla las acciones de los mensajes que realizan los distintos usuarios
+ */
 class MessagesController extends Message
 {
 
@@ -14,6 +18,15 @@ class MessagesController extends Message
     header("location: IndexController.php?action=index", true, 303);
   }
 
+  /**
+   * Función verificarSubidaMensaje
+   * 
+   * Función que verifica que el mensaje a subir cumple los requisitos y si es así lo sube
+   * 
+   * @param mixed $texto
+   * @param mixed $messagePic
+   * @return void
+   */
   public function verificarSubidaMensaje($texto, $messagePic)
   {
 

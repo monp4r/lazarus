@@ -1,6 +1,10 @@
 <?php
 
-
+/**
+ * Clase Index
+ * 
+ * Clase que modela las situaciones del inicio de la aplicación
+ */
 class Index
 {
 
