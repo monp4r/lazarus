@@ -13,15 +13,17 @@ include_once '../inc/templates/main_templates/navbar.php';
 
 <br>
 
-<div class="content grid place-items-center lg:grid-cols-3">
+<div class="content grid place-items-center lg:grid-cols-3 ">
   
   <?php
 
     foreach($listadoUsuarios as $usuario){
 
       echo "<div class=\"w-80\">"; 
-
-      echo "<div class=\"rounded-box grid place-items-center items-center gap-4 p-4 py-8 shadow-xl bg-info text-info-content\">";
+      
+      echo "<div class=\"rounded-box grid place-items-center items-center gap-4 p-4 py-8 shadow-xl bg-info text-info-content\"
+    onclick=\"window.location='" . "./UsersController.php?action=profile&fAlias=" . $usuario->usr_alias . "'\"
+    >";
 
       mostrarPerfil($usuario->usr_profilePic,
                     $usuario->usr_alias,

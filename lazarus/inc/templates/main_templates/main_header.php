@@ -33,4 +33,4 @@ if (empty($_SESSION['usr_id'])) {
 
 </head>
 
-<body class="bg-[#111820]">
+<body class="bg-[#111820] min-h-screen">

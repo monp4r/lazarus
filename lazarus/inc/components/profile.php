@@ -7,7 +7,7 @@ function mostrarPerfil($profilePic, $alias, $fullName){
   include_once '../models/User.php';
   $im = new User();
   
-  echo "<div class=\"dropdown\" onclick=\"window.location='./UsersController.php?action=profile&fAlias=$alias'\">
+  echo "<div class=\"dropdown\" >
                   <div tabindex=\"0\">
                     <div class=\"w-full\">
                       <img src=\"$profilePic\" width=\"94\" height=\"94\" alt=\"$fullName\" class=\"mask mask-squircle\" />
