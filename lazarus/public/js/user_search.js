@@ -3,7 +3,7 @@ $(document).ready(function() {
     var input = $(this).val();
     if (input != "") {
       $.ajax({
-        url: "../inc/helpers/livesearch.php",
+        url: "../inc/helpers/search_bar_users.php",
         method: "POST",
         data: {
           input: input

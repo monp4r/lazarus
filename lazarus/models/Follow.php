@@ -8,7 +8,7 @@ class Follow extends User
   protected $col_followUser_follower;
   protected $col_followUser_followed;
 
-  protected function ConsultarSeguimientoUsuarios()
+  public function consultarSeguimientoUsuarios($seguidor, $seguido)
   {
 
     include_once '../config/Connection.php';
@@ -20,8 +20,8 @@ class Follow extends User
                AND col_followUser_followed = ?";
 
     $consulta = $ic->db->prepare($sql);
-    $consulta->bindParam(1, $this->col_followUser_follower);
-    $consulta->bindParam(2, $this->col_followUser_followed);
+    $consulta->bindParam(1, $seguidor);
+    $consulta->bindParam(2, $seguido);
     $consulta->execute();
 
     $ic->closeConnection();
@@ -30,7 +30,7 @@ class Follow extends User
   }
 
 
-  protected function SeguirUsuario($alias_usr_followed)
+  public function seguirUsuario($alias_usr_followed)
   {
     include_once '../config/Connection.php';
     $ic = new Connection();
@@ -38,7 +38,7 @@ class Follow extends User
     $sql = "INSERT INTO tab_followUser (col_followUser_follower, col_followUser_followed) 
                  VALUES (?, ?)";
 
-    $usr_prov = $this->ConsultarUsuarioPorAlias($alias_usr_followed);
+    $usr_prov = $this->consultarUsuarioPorAlias($alias_usr_followed);
 
     $seguimientoOK = 1;
     $error = "Error:";
@@ -51,7 +51,7 @@ class Follow extends User
         $seguimientoOK = 0;
         $error = $error . " No puedes seguirte a ti mismo.";
       } else {
-        if($this->ConsultarSeguimientoUsuarios() > 0){
+        if($this->consultarSeguimientoUsuarios($this->col_followUser_follower, $this->col_followUser_followed) > 0){
           $seguimientoOK = 0;
           $error = $error . " Ya sigues a este usuario";
         }
@@ -89,4 +89,46 @@ class Follow extends User
     }
 
   }
+
+  public function obtenerSeguidos(){
+    include_once '../config/Connection.php';
+    $ic = new Connection();
+
+    $sql = "SELECT TU.col_usr_alias      AS usr_alias,
+                   TU.col_usr_fullname   AS usr_fullname,
+                   TU.col_user_profilePic AS usr_profilePic
+              FROM tab_followUser
+              JOIN tab_user TU ON col_followUser_followed = col_usr_id
+             WHERE col_followUser_follower = ?";
+
+    $consulta = $ic->db->prepare($sql);
+    $consulta->bindParam(1, $this->col_followUser_follower);
+    $consulta->execute();
+    $objetoUsuario = $consulta->fetchAll(PDO::FETCH_OBJ);
+
+    $ic->closeConnection();
+
+    return $objetoUsuario;
+  }
+
+  public function obtenerComunidad(){
+    include_once '../config/Connection.php';
+    $ic = new Connection();
+
+    $sql = "SELECT col_usr_id          AS usr_id,
+                   col_usr_alias       AS usr_alias,
+                   col_usr_fullname    AS usr_fullname,
+                   col_user_profilePic AS usr_profilePic
+              FROM tab_user";
+
+    $consulta = $ic->db->prepare($sql);
+    $consulta->bindParam(1, $this->col_followUser_follower);
+    $consulta->execute();
+    $objetoUsuario = $consulta->fetchAll(PDO::FETCH_OBJ);
+
+    $ic->closeConnection();
+
+    return $objetoUsuario;
+  }
+
 }

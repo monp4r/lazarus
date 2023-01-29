@@ -9,22 +9,22 @@ include_once '../models/Index.php';
 class IndexController extends Index
 {
 
-  public function RedirectIndex()
+  public function redirectIndex()
   {
     header("location: IndexController.php?action=index", true, 303);
   }
 
-  public function RedirectLogin()
+  public function redirectLogin()
   {
     header("location: UsersController.php?action=login", true, 303);
   }
 
-  public function MostarIndex()
+  public function mostrarIndex()
   {
     if(empty($_SESSION['usr_id'])){
-      $this->RedirectLogin();
+      $this->redirectLogin();
     }else{
-      $mensajesUsuario = $this->ObtenerMensajesUsuario($_SESSION['usr_id']);
+      $mensajesUsuario = $this->obtenerMensajesUsuario($_SESSION['usr_id']);
       include_once '../views/index/index.php';
     }
   }
@@ -34,7 +34,7 @@ class IndexController extends Index
 
 if(isset($_GET['action']) && $_GET['action'] == 'index'){
   $index = new IndexController();
-  $index->MostarIndex();
+  $index->mostrarIndex();
 }
 
 ?>

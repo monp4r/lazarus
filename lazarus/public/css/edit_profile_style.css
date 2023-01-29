@@ -1,0 +1,74 @@
+@import url("https://fonts.cdnfonts.com/css/anurati");
+@import url("https://fonts.cdnfonts.com/css/euclid-circular-a");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Euclid Circular A", sans-serif;
+  
+}
+
+.content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #f9f9f9;
+  background-image: url("../img/auth_assets/login_bg_2.svg");
+  
+}
+
+.content .edit_profile .form .column {
+  display: flex;
+  column-gap: 15px;
+}
+
+@media screen and (max-width: 500px) {
+  .content .edit_profile .form .column {
+    flex-wrap: wrap;
+  }
+}
+
+.content .edit_profile{
+  position: relative;
+  width: 50%;
+  min-width: 400px;
+  background: #111820;
+  padding: 25px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 0 20px rgb(33, 108, 231);
+}
+
+.content .edit_profile > h2 {
+  font-size: 36px;
+  font-weight: 500;
+  margin: 0 0 4px;
+  font-family: "Anurati", sans-serif;
+  
+}
+
+.content .edit_profile > h3 {
+  color: rgba(255, 255, 255, 0.38);
+  margin: 0 0 30px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.content .edit_profile .form {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.content .edit_profile .form .input-box {
+  width: 100%;
+  margin-top: 20px;
+  width: 100%;
+  position: relative;
+}
+

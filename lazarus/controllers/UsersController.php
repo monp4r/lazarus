@@ -9,49 +9,49 @@ include_once '../inc/helpers/input_helper.php';
 class UsersController extends User
 {
 
-  public function Redirect()
+  public function redirect()
   {
     header("location: IndexController.php?action=index", true, 303);
   }
 
-  public function RedirectLogin()
+  public function redirectLogin()
   {
     header("location: UsersController.php?action=login", true, 303);
   }
 
-  public function RedirectSignup()
+  public function redirectSignup()
   {
     header("location: UsersController.php?action=signup", true, 303);
   }
 
-  public function RedirectGestionarPerfil()
+  public function redirectGestionarPerfil()
   {
     header("location: UsersController.php?action=edit_profile", true, 303);
   }
 
-  public function MostrarLogin()
+  public function mostrarLogin()
   {
     include_once '../views/users/login.php';
   }
 
-  public function MostrarSignup()
+  public function mostrarSignup()
   {
     include_once '../views/users/signup.php';
   }
 
-  public function MostrarGestionarPerfil()
+  public function mostrarGestionarPerfil()
   {
     include_once '../views/users/edit_profile.php';
   }
 
-  public function MostrarPerfil($usuario){
+  public function mostrarPerfil($usuario){
     
-    $datosUsuario = $this->ConsultarUsuarioPorAlias($usuario);
-    $mensajesUsuario = $this->ObtenerMensajesUsuario($usuario);
+    $datosUsuario = $this->consultarUsuarioPorAlias($usuario);
+    $mensajesUsuario = $this->obtenerMensajesUsuario($usuario);
     include_once '../views/users/profile.php';
   }
 
-  public function RegistrarUsuario($fullName, $alias, $email, $password, $profilePic)
+  public function registrarUsuario($fullName, $alias, $email, $password, $profilePic)
   {
 
     $this->col_usr_fullName = $fullName;
@@ -59,25 +59,25 @@ class UsersController extends User
     $this->col_usr_email = $email;
     $this->col_usr_password = $password;
 
-    include_once '../inc/helpers/upload_helper.php';
+    include_once '../inc/helpers/upload_helper_profilePic_signup.php';
 
     unset($_SESSION['reg_prov_fullName']);
     unset($_SESSION['reg_prov_alias']);
     unset($_SESSION['reg_prov_email']);
 
     $_SESSION['success'] = 'Perfil registrado correctamente. Inicie sesión.';
-    $this->GuardarUsuario();
-    $this->RedirectLogin();
+    $this->guardarUsuario();
+    $this->redirectLogin();
   }
 
-  public function VerificarRegistro($fullName, $alias, $email, $password, $profilePic)
+  public function verificarRegistro($fullName, $alias, $email, $password, $profilePic)
   {
-
+    
     $_SESSION['reg_prov_fullName'] = $fullName;
     $_SESSION['reg_prov_alias'] = $alias;
     $_SESSION['reg_prov_email'] = $email;
 
-    $usuario = $this->ConsultarUsuario($alias, $email);
+    $usuario = $this->consultarUsuario($alias, $email);
 
     if ($usuario !== 'sin_datos') {
       if ($usuario->col_usr_alias == $alias) {
@@ -85,14 +85,14 @@ class UsersController extends User
       }
       if ($usuario->col_usr_email == $email)
         $_SESSION['error_email'] = 'Email ya registrado.';
-      $this->RedirectSignup();
+      $this->redirectSignup();
     } else {
-      $this->RegistrarUsuario($fullName, $alias, $email, $password, $profilePic);
+      $this->registrarUsuario($fullName, $alias, $email, $password, $profilePic);
       $_SESSION['is_prov_alias_email'] = $alias;
     }
   }
 
-  public function IniciarSesion($usuario)
+  public function iniciarSesion($usuario)
   {
     $_SESSION['usr_id'] = $usuario->col_usr_id;
     $_SESSION['usr_email'] = $usuario->col_usr_email;
@@ -101,10 +101,10 @@ class UsersController extends User
     $_SESSION['usr_profilePic'] = $usuario->col_user_profilePic;
     $_SESSION['usr_createdAt'] = $usuario->col_usr_createdAt;
 
-    $this->Redirect();
+    $this->redirect();
   }
 
-  public function VerificarLogin($alias_email, $password)
+  public function verificarLogin($alias_email, $password)
   {
 
     $this->aux_usr_alias_email = $alias_email;
@@ -112,31 +112,31 @@ class UsersController extends User
 
     $_SESSION['is_prov_alias_email'] = $alias_email;
 
-    $usuario = $this->ConsultarUsuario($alias_email, $alias_email);
+    $usuario = $this->consultarUsuario($alias_email, $alias_email);
 
     if ($usuario == 'sin_datos') {
       $_SESSION['error'] = 'Usuario no encontrado';
-      $this->RedirectLogin();
+      $this->redirectLogin();
     } else {
       if (password_verify($this->col_usr_password, $usuario->col_usr_password)) {
-        $this->IniciarSesion($usuario);
+        $this->iniciarSesion($usuario);
       } else {
         $_SESSION['error'] = 'Contraseña incorrecta. Inténtelo de nuevo';
-        $this->RedirectLogin();
+        $this->redirectLogin();
       }
     }
   }
 
-  public function CerrarSesion()
+  public function cerrarSesion()
   {
     session_destroy();
-    $this->RedirectLogin();
+    $this->redirectLogin();
   }
 
-  public function GuardarCambiosPerfil($profilePic, $alias)
+  public function guardarCambiosPerfil($profilePic, $alias)
   {
-    include_once '../inc/helpers/upload_helper_actualizar.php';
-    $this->ActualizarUsuario();
+    include_once '../inc/helpers/upload_helper_profilePic_update.php';
+    $this->actualizarUsuario();
 
     if(!(isset($_SESSION['error_alias']) || isset($_SESSION['error_password']))){
       $_SESSION['success'] = 'Perfil actualizado correctamente.';
@@ -145,17 +145,17 @@ class UsersController extends User
     $_SESSION['usr_alias'] = $this->col_usr_alias;
     $_SESSION['usr_fullName'] = $this->col_usr_fullName;
 
-    $this->RedirectGestionarPerfil();
+    $this->redirectGestionarPerfil();
   }
 
-  public function VerificarCambiosPerfil($fullName, $alias, $password, $newPassword, $profilePic)
+  public function verificarCambiosPerfil($fullName, $alias, $password, $newPassword, $profilePic)
   {
 
     $this->col_usr_fullName = $fullName;
     $this->col_usr_id = $_SESSION['usr_id'];
 
-    $usuarioActual = $this->ConsultarUsuarioPorId($this->col_usr_id);
-    $usuarioProv = $this->ConsultarUsuarioPorAlias($alias);
+    $usuarioActual = $this->consultarUsuarioPorId($this->col_usr_id);
+    $usuarioProv = $this->consultarUsuarioPorAlias($alias);
 
     if (isset($usuarioProv->col_usr_alias) && $usuarioProv->col_usr_alias != $usuarioActual->col_usr_alias) {
       $_SESSION['error_alias'] = 'Alias ya registrado.';
@@ -164,31 +164,25 @@ class UsersController extends User
       $this->col_usr_alias = $alias;
     }
 
-
     if (isset($newPassword) && $newPassword !== '') {
       if (password_verify($password, $usuarioActual->col_usr_password)) {
         if($newPassword != $password){
           $this->col_usr_password = password_hash($newPassword, PASSWORD_ARGON2ID);
         }else{
           $_SESSION['error_password'] = 'La nueva contraseña no puede ser igual a la anterior.';
-          $this->RedirectGestionarPerfil();
+          $this->redirectGestionarPerfil();
         }
       } else {
         $_SESSION['error_password'] = 'Contraseña incorrecta.';
-        $this->RedirectGestionarPerfil();
+        $this->redirectGestionarPerfil();
       }
     } else {
       $this->col_usr_password = $usuarioActual->col_usr_password;
     }
-  
     
-    #$this->col_user_profilePic = $usuarioActual->col_user_profilePic;
-    
-    $this->GuardarCambiosPerfil($profilePic, $alias);
+    $this->guardarCambiosPerfil($profilePic, $alias);
     
   }
-  
-
 
 }
 
@@ -196,34 +190,34 @@ class UsersController extends User
 
 if (isset($_GET['action']) && $_GET['action'] == 'signup') {
   $ic = new UsersController();
-  $ic->MostrarSignup();
+  $ic->mostrarSignup();
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'login') {
   $ic = new UsersController();
-  $ic->MostrarLogin();
+  $ic->mostrarLogin();
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
   $ic = new UsersController();
-  $ic->CerrarSesion();
+  $ic->cerrarSesion();
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'profile') {  
     $ic = new UsersController();
-    $ic->MostrarPerfil(comprobar_entrada($_GET['fAlias']));
+    $ic->mostrarPerfil(comprobar_entrada($_GET['fAlias']));
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'edit_profile' && isset($_SESSION['usr_id'])) {
   $ic = new UsersController();
-  $ic->MostrarGestionarPerfil();
+  $ic->mostrarGestionarPerfil();
 }
 
 // Tratamiento de HTTP POST
 
 if (isset($_POST['action']) && $_POST['action'] == 'signup') {
   $ic = new UsersController();
-  $ic->VerificarRegistro(
+  $ic->verificarRegistro(
     comprobar_entrada($_POST['fNombre']),
     comprobar_entrada($_POST['fAlias']),
     comprobar_entrada($_POST['fEmail']),
@@ -234,7 +228,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'signup') {
 
 if (isset($_POST['action']) && $_POST['action'] == 'login') {
   $ic = new UsersController();
-  $ic->VerificarLogin(
+  $ic->verificarLogin(
     comprobar_entrada($_POST['fAlias_fEmail']),
     comprobar_entrada($_POST['fPassword'])
   );
@@ -242,7 +236,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
 
 if (isset($_POST['action']) && $_POST['action'] == 'edit_profile') {
   $ic = new UsersController();
-  $ic->VerificarCambiosPerfil(
+  $ic->verificarCambiosPerfil(
     comprobar_entrada($_POST['fNombre']),
     comprobar_entrada($_POST['fAlias']),
     comprobar_entrada($_POST['fPassword']),

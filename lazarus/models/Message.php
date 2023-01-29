@@ -10,7 +10,7 @@ class Message
 
   protected $col_usrPost_createdAt;
 
-  protected function GuardarMensaje()
+  protected function guardarMensaje()
   {
 
     include_once '../config/Connection.php';

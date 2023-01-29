@@ -8,7 +8,8 @@ include_once '../inc/templates/main_templates/main_header.php';
 include_once '../inc/templates/main_templates/navbar.php';
 
 ?>
-
+<!-- Importamos hojas de estilo y scripts -->
+<link rel="stylesheet" href="../public/css/index_style.css">
 <script src="../public/js/image_validation.js"></script>
 <script src="../public/js/message_validation.js"></script>
 
@@ -25,7 +26,7 @@ if (isset($_SESSION['text_msg_error'])) {
 }
 
 if (isset($_SESSION['msg_success'])) {
-  alertSuccess($_SESSION['msg_success']);
+  alertsuccess($_SESSION['msg_success']);
   unset($_SESSION['msg_success']);
 }
 

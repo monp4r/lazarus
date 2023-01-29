@@ -11,7 +11,7 @@ class User{
   protected $col_usr_createdAt;
   protected $aux_usr_alias_email;
 
-  protected function GuardarUsuario(){
+  protected function guardarUsuario(){
     
     include_once '../config/Connection.php';
     $ic = new Connection();  
@@ -32,7 +32,7 @@ class User{
     $ic->closeConnection();
   }
 
-  protected function ConsultarUsuario($alias, $email)
+  protected function consultarUsuario($alias, $email)
   {
     include_once '../config/Connection.php';
     $ic = new Connection();
@@ -59,7 +59,7 @@ class User{
 
   }
 
-  protected function ConsultarUsuarioPorAlias($alias)
+  protected function consultarUsuarioPorAlias($alias)
   {
     include_once '../config/Connection.php';
     $ic = new Connection();
@@ -84,7 +84,7 @@ class User{
 
   }
 
-  protected function ConsultarUsuarioPorId($id){
+  protected function consultarUsuarioPorId($id){
     include_once '../config/Connection.php';
     $ic = new Connection();
 
@@ -108,7 +108,7 @@ class User{
     return $usuario;
   }
 
-  protected function ActualizarUsuario(){
+  protected function actualizarUsuario(){
     include_once '../config/Connection.php';
     $ic = new Connection();
 
@@ -130,7 +130,7 @@ class User{
     $ic->closeConnection();
   }
 
-  public function ObtenerMensajesUsuario($usuario)
+  public function obtenerMensajesUsuario($usuario)
   {
     include_once '../config/Connection.php';
     $ic = new Connection();
@@ -166,7 +166,7 @@ class User{
 
   }
 
-  public function ObtenerSeguidoresUsuario($alias){
+  public function obtenerSeguidoresUsuario($alias){
     include_once '../config/Connection.php';
     $ic = new Connection();
 
@@ -187,7 +187,7 @@ class User{
 
   }
 
-  public function ObtenerSeguidosUsuario($alias){
+  public function obtenerSeguidosUsuario($alias){
     include_once '../config/Connection.php';
     $ic = new Connection();
 

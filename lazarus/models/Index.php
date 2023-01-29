@@ -4,7 +4,7 @@
 class Index
 {
 
-  public function ObtenerMensajesUsuario($usuario)
+  public function obtenerMensajesUsuario($usuario)
   {
     include_once '../config/Connection.php';
     $ic = new Connection();
