@@ -8,6 +8,8 @@ include_once '../inc/components/follow.php';
 include_once '../inc/templates/main_templates/main_header.php';
 include_once '../inc/templates/main_templates/navbar.php';
 ?>
+
+<!-- Importamos hojas de estilo y scripts -->
 <link rel="stylesheet" href="../public/css/profile_style.css">
 <link rel="stylesheet" href="../public/css/index_style.css">
 

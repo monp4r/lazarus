@@ -52,10 +52,9 @@ if (isset($_SESSION['msg_success'])) {
           $_SESSION['usr_fullName']
         );
 
-        echo "<button class=\"btn\" onclick=\"location.href='./UsersController.php?action=edit_profile'\">
-                Editar perfil
-              </button>
-              </div>";
+        mostrarBotonEditarPerfil();
+        echo "</div>";
+        
         ?>
       </div>
 
