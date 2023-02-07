@@ -1,9 +1,9 @@
 function mostrarVistaPreviaImagen(event) {
   if (event.target.files.length > 0) {
-    var fuente = URL.createObjectURL(event.target.files[0]);
+    var src = URL.createObjectURL(event.target.files[0]);
     var preview = document.getElementById("fImagen-preview");
     var previewString = document.getElementById("text-preview");
-    preview.fuente = fuente;
+    preview.src = src;
     preview.style.display = "block";
     previewString.style.display = "block";
   }
