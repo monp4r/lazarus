@@ -16,24 +16,6 @@
   - Versión HTTPS: https://virtual.lab.infor.uva.es:62283/~monpar/lazarus/
 
 
--- CREDENCIALES ACCESO --
--------------------------
-
-  - Servidor Apache: 
-      Usuario:    fdiaz
-      Contraseña: vs179onL
-  
-  - PhpMyAdmin (Base de datos - lazarus):
-      Dirección:  https://virtual.lab.infor.uva.es:62283/phpmyadmin/index.php
-      Usuario:    fdiaz
-      Contraseña: vs179onL
-
-  - Página web Lazarus:
-      Alias:    fdiaz
-      Email:      fdiaz@uva.es
-      Contraseña: vs179onL
-
-
 -- CUESTIONES DE IMPLEMENTACIÓN RESEÑABLES --
 ---------------------------------------------
 
