@@ -33,22 +33,22 @@
 
   La organización de ficheros se dispone de la siguiente forma:
 
-    - Directorio config: en este se sitúan elementos de configuración que pueden ser variables a lo largo del tiempo de vida de la aplicación. Por ejemplo, las credenciales de acceso a la BD a la que nos conectamos.
+  - Directorio config: en este se sitúan elementos de configuración que pueden ser variables a lo largo del tiempo de vida de la aplicación. Por ejemplo, las credenciales de acceso a la BD a la que nos conectamos.
 
-    - Directorio controllers: en este se sitúan los controladores de la aplicación mencionados anteriormente.
+  - Directorio controllers: en este se sitúan los controladores de la aplicación mencionados anteriormente.
 
-    - Directorio inc:
+  - Directorio inc:
 
-        - Directorio components: aquí se almacenan componentes utilizados en la aplicación con bastante frecuencia.
+      - Directorio components: aquí se almacenan componentes utilizados en la aplicación con bastante frecuencia.
 
-        - Directorio helpers:    en este directorio se almacenan ficheros que aportan diversas funcionalidades a la aplicación, desde la comprobación de la entrada de datos hasta subir imágenes.
-        
-        - Directorio templates:  en este directorio se almacenan las plantillas que se utilizan para intentar no repetir el mismo código varias veces.
+      - Directorio helpers:    en este directorio se almacenan ficheros que aportan diversas funcionalidades a la aplicación, desde la comprobación de la entrada de datos hasta subir imágenes.
+      
+      - Directorio templates:  en este directorio se almacenan las plantillas que se utilizan para intentar no repetir el mismo código varias veces.
 
-    - Directorio models: aquí se almacenan los modelos del patrón MVC necesarios para trabajar con todos los datos de la aplicación.
+  - Directorio models: aquí se almacenan los modelos del patrón MVC necesarios para trabajar con todos los datos de la aplicación.
 
-    - Directorio views: contienen el código de nuestra aplicación que tendrá el objetivo de cargar la visualización de las distintas interfaces de nuestra aplicación. También trabajamos con datos, pero únicamente accediendo a ellos. Cabe destacar que en este directorio se almacenan de forma local las imágenes que se van a tratar en nuestra aplicación (tanto imágenes de perfil como de mensajes).
+  - Directorio views: contienen el código de nuestra aplicación que tendrá el objetivo de cargar la visualización de las distintas interfaces de nuestra aplicación. También trabajamos con datos, pero únicamente accediendo a ellos. Cabe destacar que en este directorio se almacenan de forma local las imágenes que se van a tratar en nuestra aplicación (tanto imágenes de perfil como de mensajes).
 
-    - Directorio public: aquí se almacenan todos los recursos relacionados con las vistas de la aplicación: biblioteca de JQuery y sus plugins, ficheros JS de validación, hojas de estilo, iconos, imágenes de logos, ...
+  - Directorio public: aquí se almacenan todos los recursos relacionados con las vistas de la aplicación: biblioteca de JQuery y sus plugins, ficheros JS de validación, hojas de estilo, iconos, imágenes de logos, ...
 
-    - Fichero index.php: desde este fichero realizaremos redirecciones a los distintos controladores dependiende si se han activado variables de sesión.
+  - Fichero index.php: desde este fichero realizaremos redirecciones a los distintos controladores dependiende si se han activado variables de sesión.
