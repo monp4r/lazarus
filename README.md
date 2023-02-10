@@ -13,15 +13,15 @@
   <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
 
 
--- PÁGINA WEB DEL PROYECTO --
------------------------------
+PÁGINA WEB DEL PROYECTO
+-----------------------
   - Versión HTTP:  http://virtual.lab.infor.uva.es:62282/~monpar/lazarus/
   
   - Versión HTTPS: https://virtual.lab.infor.uva.es:62283/~monpar/lazarus/
 
 
--- CUESTIONES DE IMPLEMENTACIÓN RESEÑABLES --
----------------------------------------------
+CUESTIONES DE IMPLEMENTACIÓN RESEÑABLES
+---------------------------------------
 
   Esta aplicación se ha creado siguiendo el patrón Modelo Vista Controlador, intentando separar de forma adecuada la lógica de negocio de nuestra aplicación y su visualización.
 
@@ -30,8 +30,8 @@
   Sin embargo, considero que se podrían unificar estos controladores en un único controlador que gestione los usuarios ('UsersController').
 
 
--- ORGANIZACIÓN DE FICHEROS FUENTES EN LAS CARPETAS DE LA APLICACIÓN - Carpeta "/home/monpar/public_html/lazarus" --
---------------------------------------------------------------------------------------------------------------------
+ORGANIZACIÓN DE FICHEROS FUENTES EN LAS CARPETAS DE LA APLICACIÓN - Carpeta "lazarus"
+--------------------------------------------------------------------------------------------------------------
 
   Se ha tomado la decisión de escribir casi todo el código fuente de la aplicación en inglés por objetivos de aprendizaje propios del alumno.
 
