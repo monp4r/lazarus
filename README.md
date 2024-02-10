@@ -2,10 +2,12 @@
     <a href=""><img src="https://github.com/monp4r/lazarus/blob/053a463f43905133a3b8ab3f2938836d9f39d447/public/img/lazarus_logo.svg" width="100px"></a>
 </p>
 
-<h1 align="center"><p align="center">LAZARUS - A Twitter-Inspired PHP Web App </h1></h1>
+<h1 align="center">LAZARUS - A Twitter-Inspired PHP Web App</h1>
 
 <p align="center" id="badges">
-    <a href="https://github.com/monp4r/lazarus/blob/master/LICENSE"><img src="https://img.shields.io/github/license/monp4r/lazarus" alt="License"></a> <a href="#"><img src="https://img.shields.io/github/languages/code-size/monp4r/lazarus" alt="Code size"></a> <a href="https://github.com/monp4r/lazarus/commits"><img src="https://img.shields.io/github/last-commit/monp4r/lazarus" alt="Last commit"></a>
+    <a href="https://github.com/monp4r/lazarus/blob/master/LICENSE"><img src="https://img.shields.io/github/license/monp4r/lazarus" alt="License"></a>
+    <a href="#"><img src="https://img.shields.io/github/languages/code-size/monp4r/lazarus" alt="Code size"></a>
+    <a href="https://github.com/monp4r/lazarus/commits"><img src="https://img.shields.io/github/last-commit/monp4r/lazarus" alt="Last commit"></a>
 </p>
 
 > Created by **Juan Francisco Montero Parejo**
@@ -14,13 +16,13 @@
 
 Lazarus is a dynamic PHP web application, inspired by the Model-View-Controller (MVC) pattern. Developed as part of a coursework for a subject in my double degree in mathematics at the University of Valladolid, this project embodies the spirit of a Twitter-like experience.
 
-# Implementation Highlights
+## Implementation Highlights
 
-## Design Pattern: Model-View-Controller (MVC)
+### Design Pattern: Model-View-Controller (MVC)
 
 Lazarus adopts the MVC architectural pattern, meticulously separating business logic from presentation to create a robust and modular codebase.
 
-## Controllers
+### Controllers
 
 The application features specialized controllers for distinct functionalities:
 
@@ -29,11 +31,11 @@ The application features specialized controllers for distinct functionalities:
 - **MessageController:** Controls the messages sent by users.
 - **UserTrackingController:** Manages user tracking features.
 
-## Controller Consolidation
+### Controller Consolidation
 
 Consideration has been given to consolidating controllers into a unified entity, such as the proposed 'UsersController,' aimed at streamlining the codebase and improving maintainability.
 
-# Getting Started
+## Getting Started
 
 To embark on the Lazarus experience:
 
@@ -42,7 +44,7 @@ To embark on the Lazarus experience:
 3. Set up a local server (e.g., using PHP's built-in server): `php -S localhost:8000`
 4. Open your web browser and visit [http://localhost:8000](http://localhost:8000)
 
-# Contributing
+## Contributing
 
 Be part of the Lazarus journey:
 
@@ -52,18 +54,17 @@ Be part of the Lazarus journey:
 4. Push to your branch: `git push origin feature/new-feature`.
 5. Submit a pull request.
 
-# License
+## License
 
 This project is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
 
-# Acknowledgments
+## Acknowledgments
 
 Gratitude to the University of Valladolid for championing this project, fostering creativity, and encouraging the development of a Twitter-like experience.
 
 Explore, enhance, and contribute to the Lazarus PHP MVC Twitter-Like Web Application!
 
-
-## Folders (and index file)
+### Folders (and index file)
 
 | Folder                           | Description                                                                                                                                                              |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -73,6 +74,11 @@ Explore, enhance, and contribute to the Lazarus PHP MVC Twitter-Like Web Applica
 | [`components`](./inc/components) | Stores components frequently used in the application.                                                                                                                    |
 | [`helpers`](./inc/helpers)       | Holds files providing various functionalities, from data input validation to image uploading.                                                                            |
 | [`templates`](./inc/templates)   | Stores templates used to avoid repetitive code.                                                                                                                          |
+| [`models`](./models)             | Stores the models necessary for the MVC pattern to work with all application data.                                                                                       |
+| [`views`](./views)               | Contains code responsible for loading the visualization of different interfaces. Local storage for images used in the application, including profile and message images. |
+| [`public`](./public)             | Stores all resources related to the application's views, including the jQuery library and plugins, JS validation files, stylesheets, icons, logos, etc.                  |
+| [`index.php`](./index.php)       | Main file for redirecting to various controllers based on session variable activation.                                                                                   |
+
 | [`models`](./models)             | Stores the models necessary for the MVC pattern to work with all application data.                                                                                       |
 | [`views`](./views)               | Contains code responsible for loading the visualization of different interfaces. Local storage for images used in the application, including profile and message images. |
 | [`public`](./public)             | Stores all resources related to the application's views, including the jQuery library and plugins, JS validation files, stylesheets, icons, logos, etc.                  |
