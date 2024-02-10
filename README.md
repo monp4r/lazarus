@@ -10,7 +10,7 @@
     <a href="https://github.com/monp4r/lazarus/commits"><img src="https://img.shields.io/github/last-commit/monp4r/lazarus" alt="Last commit"></a>
 </p>
 
-> Created by **Juan Francisco Montero Parejo**
+> Created by **Juan Francisco Montero Parejo** (<https://github.com/monp4r/>)
 
 ## Overview
 
@@ -64,7 +64,7 @@ I want to express my sincere gratitude to the professors at the University of Va
 
 Explore, enhance, and contribute to the Lazarus PHP MVC Twitter-Like Web Application!
 
-### Folders (and index file)
+## Project Directory Structure
 
 | Folder                           | Description                                                                                                                                                              |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
