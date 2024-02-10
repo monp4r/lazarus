@@ -56,7 +56,7 @@ Be part of the Lazarus journey:
 
 ## License
 
-This project is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+This project is licensed under the MIT LICENSE.
 
 ## Acknowledgments
 
