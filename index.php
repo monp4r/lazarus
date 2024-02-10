@@ -7,7 +7,7 @@
  * If the user is not logged in, we redirect the user to the login page.
  * 
  * Since this point, we are going to use the controllers to manage the actions of the users, 
- * following the MVC pattern architecture. *  
+ * following the MVC pattern architecture.  
  */
 
 if(empty($_SESSION['usr_id'])){
