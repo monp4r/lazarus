@@ -74,5 +74,5 @@ Explore, enhance, and contribute to the Lazarus PHP MVC Twitter-Like Web Applica
 | [`models`](./models)             | Stores the models necessary for the MVC pattern to work with all application data.                                                                                       |
 | [`views`](./views)               | Contains code responsible for loading the visualization of different interfaces. Local storage for images used in the application, including profile and message images. |
 | [`public`](./public)             | Stores all resources related to the application's views, including the jQuery library and plugins, JS validation files, stylesheets, icons, logos, etc.                  |
-| [`construccionDB.sql`](./construccionDB.sql)       | SQL to create the Database of Lazarus                                                        |
+| [`construccionDB.sql`](./construccionDB.sql)       | SQL file which creates the Database of Lazarus                                                        |
 | [`index.php`](./index.php)       | Main file for redirecting to various controllers based on session variable activation.                                                                                   |
