@@ -7,7 +7,7 @@
     <a href="https://github.com/monp4r/lazarus/blob/master/LICENSE"><img src="https://img.shields.io/github/license/monp4r/lazarus" alt="License"></a> <a href="#"><img src="https://img.shields.io/github/languages/code-size/monp4r/lazarus" alt="Code size"></a> <a href="https://github.com/monp4r/lazarus/commits"><img src="https://img.shields.io/github/last-commit/monp4r/lazarus" alt="Last commit"></a> 
 </p>
 
-> Creado por **Juan Francisco Montero Parejo** (<https://github.com/monp4r/>)
+> Creado por **Juan Francisco Montero** (<https://github.com/monp4r/>)
 
 ## Resumen
 
