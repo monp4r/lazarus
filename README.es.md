@@ -77,4 +77,5 @@ Quiero expresar mi sincero agradecimiento a los profesores de la Universidad de 
 | [`models`](./models)               | Almacena los modelos necesarios para que el patrón MVC funcione con todos los datos de la aplicación.                                                                    |
 | [`views`](./views)                 | Contiene el código responsable de cargar la visualización de diferentes interfaces. Almacena imágenes utilizadas en la aplicación, incluidas las de perfil y mensajes.|
 | [`public`](./public)               | Almacena todos los recursos relacionados con las vistas de la aplicación, incluida la biblioteca jQuery y complementos, archivos de validación JS, hojas de estilo, iconos, logotipos, etc.|
+| [`construccionDB.sql`](./construccionDB.sql)       | Fichero SQL de construcción de la BD de la aplicación            |
 | [`index.php`](./index.php)         | Archivo principal para redirigir a varios controladores según la activación de la variable de sesión.                                                                   |
