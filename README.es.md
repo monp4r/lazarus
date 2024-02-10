@@ -4,7 +4,7 @@
 
 <h1 align="center"><p align="center">LAZARUS - Una aplicación web en PHP inspirada en Twitter<</h1></h1>
 <p align="center" id="badges">
-    <a href="https://github.com/monp4r/lazarus/blob/master/LICENSE"><img src="https://img.shields.io/github/license/monp4r/lazarus" alt="License"></a> <a href="#"><img src="https://img.shields.io/github/languages/code-size/monp4r/lazarus" alt="Code size"></a> <a href="https://github.com/monp4r/lazarus/commits"><img src="https://img.shields.io/github/last-commit/monp4r/lazarus" alt="Last commit"></a> <a href="https://lazarus.monp4r.me">
+    <a href="https://github.com/monp4r/lazarus/blob/master/LICENSE"><img src="https://img.shields.io/github/license/monp4r/lazarus" alt="License"></a> <a href="#"><img src="https://img.shields.io/github/languages/code-size/monp4r/lazarus" alt="Code size"></a> <a href="https://github.com/monp4r/lazarus/commits"><img src="https://img.shields.io/github/last-commit/monp4r/lazarus" alt="Last commit"></a> 
 </p>
 
 > Creado por **Juan Francisco Montero Parejo** (<https://github.com/monp4r/>)
