@@ -2,45 +2,78 @@
     <a href=""><img src="https://github.com/monp4r/lazarus/blob/053a463f43905133a3b8ab3f2938836d9f39d447/public/img/lazarus_logo.svg" width="100px"></a>
 </p>
 
-<h1 align="center"><p align="center">LAZARUS</h1></h1>
+<h1 align="center"><p align="center">LAZARUS - A Twitter-Inspired PHP Web App </h1></h1>
 
 <p align="center" id="badges">
     <a href="https://github.com/monp4r/lazarus/blob/master/LICENSE"><img src="https://img.shields.io/github/license/monp4r/lazarus" alt="License"></a> <a href="#"><img src="https://img.shields.io/github/languages/code-size/monp4r/lazarus" alt="Code size"></a> <a href="https://github.com/monp4r/lazarus/commits"><img src="https://img.shields.io/github/last-commit/monp4r/lazarus" alt="Last commit"></a>
 </p>
 
-> Created by **Juan Francisco Montero Parejo** 
-# LAZARUS
+> Created by **Juan Francisco Montero Parejo**
 
-  Proyecto Tecnologías Web 2022/2023           
-                                               
-  Creado por Juan Francisco Montero Parejo.
+## Overview
 
-  Universidad de Valladolid                   
+Lazarus is a dynamic PHP web application, inspired by the Model-View-Controller (MVC) pattern. Developed as part of a coursework for a subject in my double degree in mathematics at the University of Valladolid, this project embodies the spirit of a Twitter-like experience.
 
-  <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+# Implementation Highlights
 
+## Design Pattern: Model-View-Controller (MVC)
 
-CUESTIONES DE IMPLEMENTACIÓN RESEÑABLES
----------------------------------------
+Lazarus adopts the MVC architectural pattern, meticulously separating business logic from presentation to create a robust and modular codebase.
 
-  Esta aplicación se ha creado siguiendo el patrón Modelo Vista Controlador, intentando separar de forma adecuada la lógica de negocio de nuestra aplicación y su visualización.
+## Controllers
 
-  Se han creado cuatro controladores para llevar a cabo todas las funciones de la aplicación. Estos se dedican a manejar el seguimiento entre usuarios, la página principal de la aplicación, los mensajes enviados de los usuarios y los propios usuarios.
+The application features specialized controllers for distinct functionalities:
 
-  Sin embargo, considero que se podrían unificar estos controladores en un único controlador que gestione los usuarios ('UsersController').
+- **UserController:** Manages user-related operations.
+- **HomeController:** Governs the application's main page.
+- **MessageController:** Controls the messages sent by users.
+- **UserTrackingController:** Manages user tracking features.
+
+## Controller Consolidation
+
+Consideration has been given to consolidating controllers into a unified entity, such as the proposed 'UsersController,' aimed at streamlining the codebase and improving maintainability.
+
+# Getting Started
+
+To embark on the Lazarus experience:
+
+1. Clone the repository: `git clone https://github.com/your-username/lazarus.git`
+2. Navigate to the project directory: `cd lazarus`
+3. Set up a local server (e.g., using PHP's built-in server): `php -S localhost:8000`
+4. Open your web browser and visit [http://localhost:8000](http://localhost:8000)
+
+# Contributing
+
+Be part of the Lazarus journey:
+
+1. Fork the repository on GitHub.
+2. Create a new branch for your feature or bug fix: `git checkout -b feature/new-feature`.
+3. Commit your changes: `git commit -m "Add new feature"`.
+4. Push to your branch: `git push origin feature/new-feature`.
+5. Submit a pull request.
+
+# License
+
+This project is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+# Acknowledgments
+
+Gratitude to the University of Valladolid for championing this project, fostering creativity, and encouraging the development of a Twitter-like experience.
+
+Explore, enhance, and contribute to the Lazarus PHP MVC Twitter-Like Web Application!
+
 
 ## Folders (and index file)
 
-| Folder | Description |
-| --- | --- |
-| [`config`](./config) | Contains configuration elements that may vary throughout the application's lifetime, such as credentials for connecting to the database. |
-| [`controllers`](./controllers) | Houses the application's controllers mentioned earlier. |
-| [`inc`](./inc) | Includes subdirectories and their respective functionalities: |
-| [`components`](./inc/components) | Stores components frequently used in the application. |
-| [`helpers`](./inc/helpers) | Holds files providing various functionalities, from data input validation to image uploading. |
-| [`templates`](./inc/templates) | Stores templates used to avoid repetitive code. |
-| [`models`](./models) | Stores the models necessary for the MVC pattern to work with all application data. |
-| [`views`](./views) | Contains code responsible for loading the visualization of different interfaces. Local storage for images used in the application, including profile and message images. |
-| [`public`](./public) | Stores all resources related to the application's views, including the jQuery library and plugins, JS validation files, stylesheets, icons, logos, etc. |
-| [`index.php`](./index.php) | Main file for redirecting to various controllers based on session variable activation. |
-
+| Folder                           | Description                                                                                                                                                              |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [`config`](./config)             | Contains configuration elements that may vary throughout the application's lifetime, such as credentials for connecting to the database.                                 |
+| [`controllers`](./controllers)   | Houses the application's controllers mentioned earlier.                                                                                                                  |
+| [`inc`](./inc)                   | Includes subdirectories and their respective functionalities:                                                                                                            |
+| [`components`](./inc/components) | Stores components frequently used in the application.                                                                                                                    |
+| [`helpers`](./inc/helpers)       | Holds files providing various functionalities, from data input validation to image uploading.                                                                            |
+| [`templates`](./inc/templates)   | Stores templates used to avoid repetitive code.                                                                                                                          |
+| [`models`](./models)             | Stores the models necessary for the MVC pattern to work with all application data.                                                                                       |
+| [`views`](./views)               | Contains code responsible for loading the visualization of different interfaces. Local storage for images used in the application, including profile and message images. |
+| [`public`](./public)             | Stores all resources related to the application's views, including the jQuery library and plugins, JS validation files, stylesheets, icons, logos, etc.                  |
+| [`index.php`](./index.php)       | Main file for redirecting to various controllers based on session variable activation.                                                                                   |
