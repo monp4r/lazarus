@@ -26,10 +26,10 @@ Lazarus adopts the MVC architectural pattern, meticulously separating business l
 
 The application features specialized controllers for distinct functionalities:
 
-- **UserController:** Manages user-related operations.
-- **HomeController:** Governs the application's main page.
-- **MessageController:** Controls the messages sent by users.
-- **UserTrackingController:** Manages user tracking features.
+- **UsersController:** Manages user-related operations.
+- **IndexController:** Governs the application's main page.
+- **MessagesController:** Controls the messages sent by users.
+- **FollowController:** Manages user tracking features.
 
 ### Controller Consolidation
 
@@ -60,7 +60,7 @@ This project is licensed under the [Creative Commons Attribution-NonCommercial-N
 
 ## Acknowledgments
 
-Gratitude to the University of Valladolid for championing this project, fostering creativity, and encouraging the development of a Twitter-like experience.
+I want to express my sincere gratitude to the professors at the University of Valladolid who provided their support and knowledge during my education. Their dedication and teachings were instrumental in the development of this project, which embodies the spirit of a Twitter-like experience.
 
 Explore, enhance, and contribute to the Lazarus PHP MVC Twitter-Like Web Application!
 
@@ -74,11 +74,6 @@ Explore, enhance, and contribute to the Lazarus PHP MVC Twitter-Like Web Applica
 | [`components`](./inc/components) | Stores components frequently used in the application.                                                                                                                    |
 | [`helpers`](./inc/helpers)       | Holds files providing various functionalities, from data input validation to image uploading.                                                                            |
 | [`templates`](./inc/templates)   | Stores templates used to avoid repetitive code.                                                                                                                          |
-| [`models`](./models)             | Stores the models necessary for the MVC pattern to work with all application data.                                                                                       |
-| [`views`](./views)               | Contains code responsible for loading the visualization of different interfaces. Local storage for images used in the application, including profile and message images. |
-| [`public`](./public)             | Stores all resources related to the application's views, including the jQuery library and plugins, JS validation files, stylesheets, icons, logos, etc.                  |
-| [`index.php`](./index.php)       | Main file for redirecting to various controllers based on session variable activation.                                                                                   |
-
 | [`models`](./models)             | Stores the models necessary for the MVC pattern to work with all application data.                                                                                       |
 | [`views`](./views)               | Contains code responsible for loading the visualization of different interfaces. Local storage for images used in the application, including profile and message images. |
 | [`public`](./public)             | Stores all resources related to the application's views, including the jQuery library and plugins, JS validation files, stylesheets, icons, logos, etc.                  |
