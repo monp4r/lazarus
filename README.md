@@ -22,8 +22,6 @@ CUESTIONES DE IMPLEMENTACIÓN RESEÑABLES
 ORGANIZACIÓN DE FICHEROS FUENTES EN LAS CARPETAS DE LA APLICACIÓN - Carpeta "lazarus"
 --------------------------------------------------------------------------------------------------------------
 
-  Se ha tomado la decisión de escribir casi todo el código fuente de la aplicación en inglés por objetivos de aprendizaje propios del alumno.
-
   La organización de ficheros se dispone de la siguiente forma:
 
   - Directorio config: en este se sitúan elementos de configuración que pueden ser variables a lo largo del tiempo de vida de la aplicación. Por ejemplo, las credenciales de acceso a la BD a la que nos conectamos.
@@ -45,3 +43,20 @@ ORGANIZACIÓN DE FICHEROS FUENTES EN LAS CARPETAS DE LA APLICACIÓN - Carpeta "l
   - Directorio public: aquí se almacenan todos los recursos relacionados con las vistas de la aplicación: biblioteca de JQuery y sus plugins, ficheros JS de validación, hojas de estilo, iconos, imágenes de logos, ...
 
   - Fichero index.php: desde este fichero realizaremos redirecciones a los distintos controladores dependiende si se han activado variables de sesión.
+
+
+## Folders (and index file)
+
+| Folder | Description |
+| --- | --- |
+| [`config`](./config) | Contains configuration elements that may vary throughout the application's lifetime, such as credentials for connecting to the database. |
+| [`controllers`](./controllers) | Houses the application's controllers mentioned earlier. |
+| [`inc`](./inc) | Includes subdirectories and their respective functionalities: |
+| [`components`](./inc/components) | Stores components frequently used in the application. |
+| [`helpers`](./inc/helpers) | Holds files providing various functionalities, from data input validation to image uploading. |
+| [`templates`](./inc/templates) | Stores templates used to avoid repetitive code. |
+| [`models`](./models) | Stores the models necessary for the MVC pattern to work with all application data. |
+| [`views`](./views) | Contains code responsible for loading the visualization of different interfaces. Local storage for images used in the application, including profile and message images. |
+| [`public`](./public) | Stores all resources related to the application's views, including the jQuery library and plugins, JS validation files, stylesheets, icons, logos, etc. |
+| [`index.php`](./index.php) | Main file for redirecting to various controllers based on session variable activation. |
+
