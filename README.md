@@ -3,8 +3,9 @@
 </p>
 
 <h1 align="center"><p align="center">LAZARUS</h1></h1>
+
 <p align="center" id="badges">
-    <a href="https://github.com/mianfg/md2tex/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mianfg/md2tex" alt="License"></a> <a href="#"><img src="https://img.shields.io/github/languages/code-size/mianfg/md2tex" alt="Code size"></a> <a href="https://github.com/mianfg/md2tex/commits"><img src="https://img.shields.io/github/last-commit/mianfg/md2tex" alt="Last commit"></a> <a href="https://md2tex.mianfg.me"><img src="https://img.shields.io/badge/-live%20app-orange" alt="Live app"></a>
+    <a href="https://github.com/monp4r/lazarus/blob/master/LICENSE"><img src="https://img.shields.io/github/license/monp4r/lazarus" alt="License"></a> <a href="#"><img src="https://img.shields.io/github/languages/code-size/monp4r/lazarus" alt="Code size"></a> <a href="https://github.com/monp4r/lazarus/commits"><img src="https://img.shields.io/github/last-commit/monp4r/lazarus" alt="Last commit"></a>
 </p>
 
 > Created by **Juan Francisco Montero Parejo** 
