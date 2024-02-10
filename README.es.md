@@ -2,12 +2,9 @@
     <a href=""><img src="https://github.com/monp4r/lazarus/blob/053a463f43905133a3b8ab3f2938836d9f39d447/public/img/lazarus_logo.svg" width="100px"></a>
 </p>
 
-<h1 align="center">LAZARUS - Una aplicación web en PHP inspirada en Twitter</h1>
-
+<h1 align="center"><p align="center">LAZARUS - Una aplicación web en PHP inspirada en Twitter<</h1></h1>
 <p align="center" id="badges">
-    <a href="https://github.com/monp4r/lazarus/blob/master/LICENSE"><img src="https://img.shields.io/github/license/monp4r/lazarus" alt="Licencia"></a>
-    <a href="#"><img src="https://img.shields.io/github/languages/code-size/monp4r/lazarus" alt="Tamaño del código"></a>
-    <a href="https://github.com/monp4r/lazarus/commits"><img src="https://img.shields.io/github/last-commit/monp4r/lazarus" alt="Último commit"></a>
+    <a href="https://github.com/monp4r/lazarus/blob/master/LICENSE"><img src="https://img.shields.io/github/license/monp4r/lazarus" alt="License"></a> <a href="#"><img src="https://img.shields.io/github/languages/code-size/monp4r/lazarus" alt="Code size"></a> <a href="https://github.com/monp4r/lazarus/commits"><img src="https://img.shields.io/github/last-commit/monp4r/lazarus" alt="Last commit"></a> <a href="https://lazarus.monp4r.me">
 </p>
 
 > Creado por **Juan Francisco Montero Parejo** (<https://github.com/monp4r/>)
