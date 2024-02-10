@@ -14,7 +14,7 @@
 
 ## Resumen
 
-Lazarus es una aplicación web dinámica en PHP, inspirada en el patrón de arquitectura Modelo-Vista-Controlador (MVC). Desarrollada como parte de un trabajo para una asignatura en mi doble grado en matemáticas en la Universidad de Valladolid, este proyecto encarna el espíritu de una experiencia similar a la de Twitter.
+Lazarus es una aplicación web dinámica en PHP, inspirada en el patrón de arquitectura Modelo-Vista-Controlador (MVC). Desarrollada como parte de un trabajo para una asignatura en mi doble grado en matemáticas e ingeniería informática en la Universidad de Valladolid, este proyecto encarna el espíritu de una experiencia similar a la de Twitter.
 
 ## Aspectos destacados de la implementación
 
