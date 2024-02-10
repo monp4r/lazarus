@@ -1,16 +1,17 @@
 <?php
 
 /**
- * Clase Connection
+ * Class Connection
  * 
- * Clase que controla la conexión a la base de datos
+ * This class is used to connect to the MySQL database using PDO.
+ * Moreover, it has a method to close the connection to the database.
  */
 class Connection
 {
     public $db;
 
     /**
-     * Creamos el constructor para iniciar la conexión a la base de datos
+     * We create the constructor method to connect to the database
      */
     public function __construct()
     {
@@ -25,7 +26,7 @@ class Connection
     }
     
     /**
-     * Creamos el método para cerrar la conexión a la base de datos
+     * Close the connection to the database
      * @return void
      */
     public function closeConnection()
@@ -33,4 +34,4 @@ class Connection
         $this->db = null;
     }
 
-} // Fin de la clase
+} // End of class Connection

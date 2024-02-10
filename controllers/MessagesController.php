@@ -6,9 +6,9 @@ include_once '../inc/helpers/input_helper.php';
 include_once '../models/Message.php';
 
 /**
- * Clase MessagesController
+ * MessagesController Class
  * 
- * Clase que controla las acciones de los mensajes que realizan los distintos usuarios
+ * This class is used to manage the messages actions of the users. It extends the Message class.
  */
 class MessagesController extends Message
 {
@@ -19,9 +19,9 @@ class MessagesController extends Message
   }
 
   /**
-   * Función verificarSubidaMensaje
+   * verificarSubidaMensaje Function
    * 
-   * Función que verifica que el mensaje a subir cumple los requisitos y si es así lo sube
+   * Function that verifies if the message is uploaded correctly verifying some conditions.
    * 
    * @param mixed $texto
    * @param mixed $messagePic
@@ -30,9 +30,11 @@ class MessagesController extends Message
   public function verificarSubidaMensaje($texto, $messagePic)
   {
 
+    // We get the user id from the session to save the message with the user id as foreign key in the table to know who has uploaded the message
     $id = $_SESSION['usr_id'];
     $this->col_usrPost_user = $id;
 
+    // Check if the text has between 1 and 150 characters
     if (!(strlen($texto) >= 1 && strlen($texto) <= 150)) {
       $_SESSION['text_msg_error'] = 'El texto del mensaje debe tener entre 1 y 150 caracteres.';
     } else {
@@ -42,6 +44,7 @@ class MessagesController extends Message
       }
     }
     
+    // If there is no error uploading the image attached, we save the message
     if (!(isset($_SESSION['img_msg_error']) || isset($_SESSION['text_msg_error']))) {
       $this->guardarMensaje();
       $_SESSION['msg_success'] = 'Mensaje subido correctamente.';
@@ -50,10 +53,9 @@ class MessagesController extends Message
     $this->redirectIndex();
   }
   
-} // Fin de la clase
+} // End of class MessagesController
 
-// Tratamiento de peticiones HTTP POST
-
+// Handling HTTP POST requests
 if (isset($_POST['action']) && $_POST['action'] == 'post_message') {
   $ic = new MessagesController();
   $ic->verificarSubidaMensaje(

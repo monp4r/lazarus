@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * This file is used to search users in the database
+ * We make a query to the database to search the users that match with the input
+ * and we show the results in the search bar of the users page (users.php) using AJAX
+ * in real time.
+ * 
+ * @category Helpers
+ * @package  Helpers
+ */
+
 include_once '../../config/Connection.php';
 $ic = new Connection();
 

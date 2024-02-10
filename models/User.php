@@ -1,9 +1,10 @@
 <?php 
 
 /**
- * Clase User
+ * User Class
  * 
- * Clase que controla las caracterísitcas fundamentales de los usuarios
+ * This class is used to manage the users actions. It extends the User class.
+ * This class is gonna be used to manage the users actions like login, signup, logout, edit profile, etc.
  */
 class User{
 
@@ -16,6 +17,10 @@ class User{
   protected $col_usr_createdAt;
   protected $aux_usr_alias_email;
 
+  /**
+   * Function that saves the user in the database.
+   * @return void
+   */
   protected function guardarUsuario(){
     
     include_once '../config/Connection.php';
@@ -37,6 +42,10 @@ class User{
     $ic->closeConnection();
   }
 
+  /**
+   * Function that checks if the user exists in the database.
+   * @return void
+   */
   protected function consultarUsuario($alias, $email)
   {
     include_once '../config/Connection.php';
@@ -64,6 +73,11 @@ class User{
 
   }
 
+  /**
+   * Function that checks if the user exists in the database by alias. Used in the signup process. 
+   * Used too in the follow process.
+   * @return void
+   */
   protected function consultarUsuarioPorAlias($alias)
   {
     include_once '../config/Connection.php';
@@ -89,6 +103,10 @@ class User{
 
   }
 
+  /**
+   * Function that checks if the user exists in the database by id. Used in the follow process.
+   * @return void
+   */
   protected function consultarUsuarioPorId($id){
     include_once '../config/Connection.php';
     $ic = new Connection();
@@ -113,6 +131,10 @@ class User{
     return $usuario;
   }
 
+  /**
+   * Function that handles the actualization of the user profile.
+   * @return void
+   */
   protected function actualizarUsuario(){
     include_once '../config/Connection.php';
     $ic = new Connection();
@@ -135,6 +157,10 @@ class User{
     $ic->closeConnection();
   }
 
+  /**
+   * Function that obtains the user messages and the messages of a user.
+   * @return void
+   */
   public function obtenerMensajesUsuario($usuario)
   {
     include_once '../config/Connection.php';
@@ -171,6 +197,10 @@ class User{
 
   }
 
+  /**
+   * Function that obtains the followers of a user.
+   * @return void
+   */
   public function obtenerSeguidoresUsuario($alias){
     include_once '../config/Connection.php';
     $ic = new Connection();
@@ -192,6 +222,10 @@ class User{
 
   }
 
+  /**
+   * Function that obtains the users followed by a user.
+   * @return void
+   */
   public function obtenerSeguidosUsuario($alias){
     include_once '../config/Connection.php';
     $ic = new Connection();
@@ -212,8 +246,6 @@ class User{
     return $count;
 
   }
-
-
 
 }
 

@@ -1,13 +1,21 @@
 <?php
 
 /**
- * Clase Index
+ * Index Class
  * 
- * Clase que modela las situaciones del inicio de la aplicación
+ * This class is used to manage the index actions of the users. It extends the Index class.
  */
 class Index
 {
 
+  /**
+   * obtenerMensajesUsuario Function
+   * 
+   * Function that gets the messages of the user and the users followed by the user.
+   * 
+   * @param mixed $usuario
+   * @return void
+   */
   public function obtenerMensajesUsuario($usuario)
   {
     include_once '../config/Connection.php';

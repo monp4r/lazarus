@@ -1,5 +1,13 @@
 <?php 
 
+  /**
+   * Upload the profile picture of the user when signing up
+   * 
+   * @param mixed $profilePic
+   * @param mixed $alias
+   * @return void
+   */
+
   $nom_fich_subido = $profilePic['name'];
   $tipo_fich_img = strtolower(pathinfo($nom_fich_subido, PATHINFO_EXTENSION));
 

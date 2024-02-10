@@ -3,7 +3,10 @@
 include_once '../models/User.php';
 
 /**
- * Modelo de datos del seguimiento de usuarios
+ * Follow Class
+ * 
+ * Data model of all user actions related to use persistence data.
+ * 
  */
 class Follow extends User
 {
@@ -11,6 +14,8 @@ class Follow extends User
   protected $col_followUser_follower;
   protected $col_followUser_followed;
 
+
+  // 
   public function consultarSeguimientoUsuarios($seguidor, $seguido)
   {
 
@@ -32,7 +37,7 @@ class Follow extends User
     return $consulta->rowCount();
   }
 
-
+  // We use this method to follow a user
   public function seguirUsuario($alias_usr_followed)
   {
     include_once '../config/Connection.php';
@@ -50,10 +55,12 @@ class Follow extends User
 
       $this->col_followUser_followed = $usr_prov->col_usr_id;
 
+      // We check if the user is trying to follow himself
       if($this->col_followUser_followed == $this->col_followUser_follower){
         $seguimientoOK = 0;
         $error = $error . " No puedes seguirte a ti mismo.";
       } else {
+        // We check if the user is already following the user
         if($this->consultarSeguimientoUsuarios($this->col_followUser_follower, $this->col_followUser_followed) > 0){
           $seguimientoOK = 0;
           $error = $error . " Ya sigues a este usuario";
@@ -93,6 +100,7 @@ class Follow extends User
 
   }
 
+  // We use this method to obtain the users followed by the user
   public function obtenerSeguidos(){
     include_once '../config/Connection.php';
     $ic = new Connection();
@@ -114,6 +122,7 @@ class Follow extends User
     return $objetoUsuario;
   }
 
+  // We use this method to obtain the users that the user can follow
   public function obtenerComunidad(){
     include_once '../config/Connection.php';
     $ic = new Connection();

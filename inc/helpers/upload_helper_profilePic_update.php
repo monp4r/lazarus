@@ -1,5 +1,10 @@
 <?php 
 
+  /** 
+   * This file is used to upload the profile picture of the user when the user is updating the profile.
+   * In future versions, we will use the same file to upload the profile picture in every function of the app.
+   */
+
   $nom_fich_subido = $profilePic['name'];
   $tipo_fich_img = strtolower(pathinfo($nom_fich_subido, PATHINFO_EXTENSION));
 
@@ -21,17 +26,17 @@
     $uploadOK = 0;
   }
 
-  // Comprobar el tamaño de la imagen
+  // We check the size of the image
   if ($profilePic["size"] > 8388608) {
     $uploadOK = 0;
   }
 
-  // Permitir solo ciertos formatos de fichero
+  // We allow only certain file formats, in this case, jpg, png, jpeg and gif
   if ($tipo_fich_img != "jpg" && $tipo_fich_img != "png" && $tipo_fich_img != "jpeg" && $tipo_fich_img != "gif") {
     $uploadOK = 0;
   }
 
-  // Comprobar si ha habido algún error
+  // We check if there is any error
   if($uploadOK == 0) {
     if(isset($_SESSION['usr_profilePic'])){
       $this->col_user_profilePic = $_SESSION['usr_profilePic'];

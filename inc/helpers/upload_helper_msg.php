@@ -1,5 +1,14 @@
 <?php 
 
+  /**
+   * This file is used to upload the image of the message
+   * 
+   * We get the image of the message and we check if it is an image, if it is not too big, if it is a valid format and if it is not already uploaded.
+   * 
+   * @category Helpers
+   * @package  Helpers
+   */
+
   $nom_fich_subido = $messagePic['name'];
   $tipo_fich_img = strtolower(pathinfo($nom_fich_subido, PATHINFO_EXTENSION));
 

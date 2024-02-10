@@ -1,9 +1,10 @@
 <?php
 
 /**
- * Clase Message
+ * Message Class
  * 
- * Clase que controla los mensajes de los usuarios
+ * This class controls the messages of the users
+ * 
  */
 class Message
 {
@@ -15,9 +16,15 @@ class Message
 
   protected $col_usrPost_createdAt;
 
+  /**
+   * guardarMensaje Function
+   * 
+   * Function that saves the message in the database.
+   * We use a prepared statement to avoid SQL injection.
+   * Also we handle the errors in the insertion of the message.
+   */
   protected function guardarMensaje()
   {
-
     include_once '../config/Connection.php';
     $ic = new Connection();
 
@@ -43,9 +50,7 @@ class Message
     } else {
       return "Subida del mensaje realizada correctamente";
     }
-  }
-
-  
+  } 
 }
 
 ?>

@@ -7,9 +7,10 @@ include_once '../inc/helpers/input_helper.php';
 include_once '../models/Follow.php';
 
 /**
- * Clase FollowController
+ * FollowController Class
  * 
- * Clase que controla las acciones del seguimiento de usuarios
+ * This class is used to manage the follow actions of the users. It extends the Follow class.
+ * Moreover, it has a method to redirect the user to the profile of the user followed.
  */
 class FollowController extends Follow
 {
@@ -23,9 +24,9 @@ class FollowController extends Follow
   }
 
   /**
-   * Función verificarSeguirUsuario
+   * verificarSeguirUsuario Function
    * 
-   * Función que verifica que el usuario a seguir cumple los requisitos y si es así lo sigue
+   * Function that verifies if the user is following another user.
    * 
    * @param mixed $alias_usr_followed
    * @return void
@@ -39,9 +40,10 @@ class FollowController extends Follow
   }
 
   /**
-   * Función mostrarUsuariosSeguidos
+   * mostrarUsuariosSeguidos Function
    * 
-   * Función que muestra los usuarios seguidos por el usuario que se pasa como parámetro.
+   * Function that shows the users followed by the user. 
+   * Also, it includes the view to show the users followed.
    * 
    * @param mixed $idUsuario
    * @return void
@@ -59,10 +61,9 @@ class FollowController extends Follow
     include_once '../views/follow/people.php';
   }
 
-} // Fin de la clase
+} // End of class FollowController
 
-// Tratamiento de peticiones HTTP GET
-
+// Handling of HTTP GET requests
 if (isset($_GET['action']) && $_GET['action'] == 'following') {
   $ic = new FollowController();
   if (isset($_SESSION['usr_id'])){
@@ -81,8 +82,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'people') {
   }
 }
 
-// Tratamiento de peticiones HTTP POST
-
+// Handling of HTTP POST requests
 if (isset($_POST['action']) && $_POST['action'] == 'follow_user') {
   $ic = new FollowController();
   $ic->verificarSeguirUsuario(comprobar_entrada($_POST['fUsuarioASeguir']));

@@ -6,9 +6,17 @@ include_once '../models/User.php';
 
 include_once '../inc/helpers/input_helper.php';
 
+/**
+ * UsersController Class
+ * 
+ * This class is used to manage the users actions. It extends the User class.
+ * This class is gonna be used to manage the users actions like login, signup, logout, edit profile, etc.
+ * Is the class more important of this app, following the MVC architecture.
+ */
 class UsersController extends User
 {
 
+  // Redirection methods
   public function redirect()
   {
     header("location: IndexController.php?action=index", true, 303);
@@ -29,6 +37,7 @@ class UsersController extends User
     header("location: UsersController.php?action=edit_profile", true, 303);
   }
 
+  // Show methods
   public function mostrarLogin()
   {
     include_once '../views/users/login.php';
@@ -51,6 +60,9 @@ class UsersController extends User
     include_once '../views/users/profile.php';
   }
 
+  // Methods to manage the users actions
+
+  // Method to register a user, it saves the user in the database and redirects to the login page if the user is registered correctly
   public function registrarUsuario($fullName, $alias, $email, $password, $profilePic)
   {
 
@@ -70,6 +82,7 @@ class UsersController extends User
     $this->redirectLogin();
   }
 
+  // Method to verify if the user is registered correctly
   public function verificarRegistro($fullName, $alias, $email, $password, $profilePic)
   {
     
@@ -92,6 +105,7 @@ class UsersController extends User
     }
   }
 
+  // Method to start a session
   public function iniciarSesion($usuario)
   {
     $_SESSION['usr_id'] = $usuario->col_usr_id;
@@ -104,6 +118,7 @@ class UsersController extends User
     $this->redirect();
   }
 
+  // Method to verify if the user has logged in correctly
   public function verificarLogin($alias_email, $password)
   {
 
@@ -127,12 +142,14 @@ class UsersController extends User
     }
   }
 
+  // Method to close the session
   public function cerrarSesion()
   {
     session_destroy();
     $this->redirectLogin();
   }
 
+  // Method to update the user profile
   public function guardarCambiosPerfil($profilePic, $alias)
   {
     include_once '../inc/helpers/upload_helper_profilePic_update.php';
@@ -148,6 +165,7 @@ class UsersController extends User
     $this->redirectGestionarPerfil();
   }
 
+  // Method to verify if the user has updated the profile correctly
   public function verificarCambiosPerfil($fullName, $alias, $password, $newPassword, $profilePic)
   {
 
@@ -184,9 +202,9 @@ class UsersController extends User
     
   }
 
-} // Fin de la clase
+} // End of class UsersController
 
-// Tratamiento de HTTP GET
+// Handling HTTP GET requests
 
 if (isset($_GET['action']) && $_GET['action'] == 'signup') {
   $ic = new UsersController();
@@ -213,7 +231,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit_profile' && isset($_SESSI
   $ic->mostrarGestionarPerfil();
 }
 
-// Tratamiento de HTTP POST
+// Handling HTTP POST requests
+// Here we sanitize the inputs with the comprobar_entrada method and call the other methods to manage the users actions
 
 if (isset($_POST['action']) && $_POST['action'] == 'signup') {
   $ic = new UsersController();

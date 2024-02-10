@@ -7,9 +7,10 @@ include_once '../inc/helpers/input_helper.php';
 include_once '../models/Index.php';
 
 /**
- * Clase IndexController
+ * IndexController Class
  * 
- * Clase que controla las acciones del inicio de la aplicación
+ * This class is used to manage the index actions of the users. It extends the Index class.
+ * Moreover, it has a method to redirect the user to the login page.
  */
 class IndexController extends Index
 {
@@ -35,10 +36,11 @@ class IndexController extends Index
   }
 
 
-} // Fin de la clase
+} // End of class IndexController
 
-// Tratamiento de peticiones HTTP GET
-
+// HandlING HTTP GET requests
+// If the action is index, we show the index page
+// Otherwise, we redirect the user to the index page
 if(isset($_GET['action']) && $_GET['action'] == 'index'){
   $index = new IndexController();
   $index->mostrarIndex();
