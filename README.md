@@ -56,7 +56,7 @@ Be part of the Lazarus journey:
 
 ## License
 
-This project is licensed under the MIT LICENSE.
+This project is licensed under the [MIT LICENSE](https://github.com/monp4r/lazarus/tree/master?tab=MIT-1-ov-file).
 
 ## Acknowledgments
 

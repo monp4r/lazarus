@@ -56,7 +56,7 @@ Sé parte del viaje Lazarus:
 
 ## Licencia
 
-Este proyecto está bajo la [Licencia Internacional Creative Commons Atribución-NoComercial-SinDerivados 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+Este proyecto está bajo la [Licencia MIT](https://github.com/monp4r/lazarus/tree/master?tab=MIT-1-ov-file).
 
 ## Reconocimientos
 
