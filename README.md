@@ -39,7 +39,8 @@ To embark on the Lazarus experience:
 1. Clone the repository: `git clone https://github.com/your-username/lazarus.git`
 2. Navigate to the project directory: `cd lazarus`
 3. Set up a local server (e.g., using PHP's built-in server): `php -S localhost:8000`
-4. Open your web browser and visit [http://localhost:8000](http://localhost:8000)
+4. Set up a local DBMS and execute the construction SQL file (e.g., using PHPMyAdmin)
+5. Open your web browser and visit [http://localhost:8000](http://localhost:8000)
 
 ## Contributing
 
