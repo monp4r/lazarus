@@ -12,12 +12,19 @@ class Connection
 
     /**
      * We create the constructor method to connect to the database
+     * 
+     * IMPORTANT: Replace YOUR_HOST, YOUR_DB_NAME, YOUR_DB_USER and YOUR_DB_PASSWORD with your own data to 
+     * connect to the database.
+     * 
+     * The construction SQL file is in the root of the project. You can use it to create the LAZARUS database.
+     * 
+     * @return void
      */
     public function __construct()
     {
         try{
-            $config_bd = "mysql:host=localhost;dbname=lazarus;charset=utf8mb4";
-            $this->db = new PDO($config_bd, "lazarus", "rWsjts2AZ6U2ZAmg") ;
+            $config_bd = "mysql:host=YOUR_HOST;dbname=YOUR_DB_NAME;charset=utf8mb4";
+            $this->db = new PDO($config_bd, "YOUR_DB_NAME", "YOUR_DB_PASSWORD") ;
             $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $ex){
